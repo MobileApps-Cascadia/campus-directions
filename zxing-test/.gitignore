@@ -1,6 +1,6 @@
 target/
 *.iml
-bin/
-gen/
-libs/
+#bin/
+#gen/
+#libs/
 local.properties
