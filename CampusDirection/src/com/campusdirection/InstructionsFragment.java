@@ -19,22 +19,17 @@ public class InstructionsFragment extends Fragment {
 	private static final String EXTRA_CODE = "com.example.testingcodereading.code";
 	private Button scanButton;
 	private TextView textDirection;
-	private TextView lookFor;
+	private TextView textLookFor;
 	private static InstructionsFragment fragment;
-	private static String codex;
-	private static String codey;
 
 
-	public static InstructionsFragment newInstance(String code, String code2) {
+	public static InstructionsFragment newInstance() {
 		Bundle args = new Bundle();
-		args.putSerializable(EXTRA_CODE, code+code2);
+		args.putSerializable(EXTRA_CODE, "");
 
 		fragment = new InstructionsFragment();
 		fragment.setArguments(args);
 
-		codex = code;
-		codey = code2;
-		
 		return fragment;
 	}
 
@@ -44,23 +39,26 @@ public class InstructionsFragment extends Fragment {
 		View v = inflater.inflate(R.layout.activity_instructions, parent, false);
 		
 		// display what user look for on top of screen.
-		lookFor = (TextView) v.findViewById(R.id.lookForText);
-		lookFor.setText(getResources().getString(R.string.lookForStr, ((MainActivity)getActivity()).lookFor));
+		textLookFor = (TextView) v.findViewById(R.id.lookForText);
+		textLookFor.setText(getResources().getString(R.string.lookForStr, ((MainActivity)getActivity()).lookFor));
 
 		
 		textDirection = (TextView) v.findViewById(R.id.textDirection);
-		if( ((MainActivity)getActivity()).direction == "" )
+		String tempDirection = ((MainActivity)getActivity()).direction;
+		if(tempDirection == "" )
 			textDirection.setText(getResources().getString(R.string.directionStr));
+		else
+			textDirection.setText(tempDirection);
 
-		scanButton = (Button) v.findViewById(R.id.scanButton);
-		
+
+		//open ZXing scanner when click on button
+		scanButton = (Button) v.findViewById(R.id.scanButton);		
 		scanButton.setOnClickListener(new View.OnClickListener() {
 	
-			@Override
-			public void onClick(View v) {
-
-				IntentIntegrator integrator = new IntentIntegrator(getActivity());
-				integrator.initiateScan();
+		@Override
+		public void onClick(View v) {
+			IntentIntegrator integrator = new IntentIntegrator(getActivity());
+			integrator.initiateScan();
 			}
 		});
 

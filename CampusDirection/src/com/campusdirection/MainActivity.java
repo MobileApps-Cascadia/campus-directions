@@ -39,16 +39,17 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 		super.onActivityResult(requestCode, resultCode, intent);
 //		System.out.println("the code is catch");
 
-		IntentResult scanResult = IntentIntegrator.parseActivityResult(
-				requestCode, resultCode, intent);
+		IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
 		// handle scan result
 		if (scanResult != null) {
 			FragmentManager fm = getFragmentManager();
 
 //			Fragment newFrame = MainFragment.newInstance(scanResult.toString());
-			String myResult = intent.getStringExtra("SCAN_RESULT");
-			InstructionsFragment newFrame = InstructionsFragment.newInstance(myResult, "");
+			String result = intent.getStringExtra("SCAN_RESULT");
+			
+			direction = "Here is your scan result ["+result+"]";
 			//send result to new fragment.
+			InstructionsFragment newFrame = InstructionsFragment.newInstance();
 			fm.beginTransaction().replace(R.id.fragmentContainer, newFrame).commit();
 		}
 	}
