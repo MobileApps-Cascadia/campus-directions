@@ -8,8 +8,8 @@ import android.os.Handler;
  
 public class SplashScreen extends Activity {
  
-    // Splash screen timer set for 5 seconds
-    private static int SPLASH_TIME_OUT = 5000;
+    // Splash screen timer set for 3 seconds
+    private static int SPLASH_TIME_OUT = 3000;
  
     @Override
     protected void onCreate(Bundle savedInstanceState) {

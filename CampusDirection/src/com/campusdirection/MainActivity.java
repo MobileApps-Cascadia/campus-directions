@@ -2,80 +2,53 @@
 
 package com.campusdirection;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
 
-public class MainActivity extends Activity implements OnClickListener {
+public class MainActivity extends Activity implements SearchFragment.SearchFragmentListener{
 
-	// scanner request code setting, default 123
-	public int SCANNER_REQUEST_CODE = 123;
-
-	// Test QR code scanner result
-	TextView tvScanResults;
-	Button btnScan;
-	
+	SearchFragment searchFragment;
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		if(savedInstanceState != null)
+			return;
 
-		initViews();
-	}
-
-	private void initViews() {
-		tvScanResults = (TextView) findViewById(R.id.tvResults);
-		btnScan = (Button) findViewById(R.id.btnScan);
-		btnScan.setOnClickListener(this);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-
-		if (requestCode == SCANNER_REQUEST_CODE) {
-			// Handle scan intent
-			if (resultCode == Activity.RESULT_OK) {
-				// Handle successful scan
-				String contents = intent.getStringExtra("SCAN_RESULT");
-				String formatName = intent.getStringExtra("SCAN_RESULT_FORMAT");
-				byte[] rawBytes = intent.getByteArrayExtra("SCAN_RESULT_BYTES");
-				int intentOrientation = intent.getIntExtra("SCAN_RESULT_ORIENTATION", Integer.MIN_VALUE);
-				Integer orientation = (intentOrientation == Integer.MIN_VALUE) ? null : intentOrientation;
-				String errorCorrectionLevel = intent.getStringExtra("SCAN_RESULT_ERROR_CORRECTION_LEVEL");
-
-				// Print out the QR code result
-				tvScanResults.setText(contents + "\n\n" + formatName);
-
-			} else if (resultCode == Activity.RESULT_CANCELED) {
-				// Handle cancel
-			}
-		} else {
-			// Handle other intents
-		}
-
-	}
-
-	@Override
-	public void onClick(View v) {
-		if (v.getId() == R.id.btnScan) {
-			// go to full screen scan mode
-			Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-			intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
-			startActivityForResult(intent, SCANNER_REQUEST_CODE);
+		if(findViewById(R.id.fragmentContainer) != null)
+		{
+			searchFragment = new SearchFragment();
+	        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+	        transaction.add(R.id.fragmentContainer, searchFragment);
+	        transaction.commit(); // causes CollectionListFragment to display		
 		}
 	}
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		super.onActivityResult(requestCode, resultCode, intent);
+//		System.out.println("the code is catch");
+
+		IntentResult scanResult = IntentIntegrator.parseActivityResult(
+				requestCode, resultCode, intent);
+		// handle scan result
+		if (scanResult != null) {
+			FragmentManager fm = getFragmentManager();
+
+//			Fragment newFrame = MainFragment.newInstance(scanResult.toString());
+			String myResult = intent.getStringExtra("SCAN_RESULT");
+			InstructionsFragment newFrame = InstructionsFragment.newInstance(scanResult.toString(), "");
+			//send result to new fragment.
+			fm.beginTransaction().replace(R.id.fragmentContainer, newFrame).commit();
+		}
+	}
+	
 }

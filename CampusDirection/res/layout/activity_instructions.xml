@@ -15,25 +15,14 @@
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#454545"
-        android:textSize="50dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_centerHorizontal="true"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#454545"
-        android:textSize="50dp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/textView1"
         android:layout_marginTop="48dp"
         android:gravity="center"
         android:text="Then scan another QR code."
@@ -41,14 +30,14 @@
         android:textColor="#454545" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/scanButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView3"
         android:layout_marginTop="60dp"
         android:gravity="center"
-        android:text="Scan Again"
+        android:text="Scan QR Code"
         android:textColor="#454545" />
 
 </RelativeLayout>
