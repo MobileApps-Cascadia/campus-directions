@@ -45,7 +45,7 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 
 //			Fragment newFrame = MainFragment.newInstance(scanResult.toString());
 			String myResult = intent.getStringExtra("SCAN_RESULT");
-			InstructionsFragment newFrame = InstructionsFragment.newInstance(scanResult.toString(), "");
+			InstructionsFragment newFrame = InstructionsFragment.newInstance(myResult, "");
 			//send result to new fragment.
 			fm.beginTransaction().replace(R.id.fragmentContainer, newFrame).commit();
 		}
