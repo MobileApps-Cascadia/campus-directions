@@ -5,5 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Campus Direction \nBIT272 Final Project</string>
     <string name="copyright">CCC @ 2014</string>
+    <string name="lookForStr">Looking For: %1$s</string>
+    <string name="QRCodeLabel">Scan New QR Code Again Anytime</string>
+    <string name="directionStr">Please find QR Code near by then click on Scan QR Code button below.</string>
     
 </resources>

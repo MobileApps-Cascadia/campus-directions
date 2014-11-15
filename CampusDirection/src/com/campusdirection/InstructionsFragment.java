@@ -18,7 +18,8 @@ public class InstructionsFragment extends Fragment {
 
 	private static final String EXTRA_CODE = "com.example.testingcodereading.code";
 	private Button scanButton;
-	private TextView mTextView;
+	private TextView textDirection;
+	private TextView lookFor;
 	private static InstructionsFragment fragment;
 	private static String codex;
 	private static String codey;
@@ -41,10 +42,15 @@ public class InstructionsFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState){
 		View v = inflater.inflate(R.layout.activity_instructions, parent, false);
+		
+		// display what user look for on top of screen.
+		lookFor = (TextView) v.findViewById(R.id.lookForText);
+		lookFor.setText(getResources().getString(R.string.lookForStr, ((MainActivity)getActivity()).lookFor));
 
-		mTextView = (TextView) v.findViewById(R.id.textView1);
-//		mTextView.setText((String) getArguments().getSerializable(EXTRA_CODE));
-		mTextView.setText(codex);
+		
+		textDirection = (TextView) v.findViewById(R.id.textDirection);
+		if( ((MainActivity)getActivity()).direction == "" )
+			textDirection.setText(getResources().getString(R.string.directionStr));
 
 		scanButton = (Button) v.findViewById(R.id.scanButton);
 		

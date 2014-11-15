@@ -3,41 +3,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_main"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:textAlignment="center" >
+
+    <Button
+        android:id="@+id/scanButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:gravity="center"
+        android:text="Scan QR Code"
+        android:textColor="#454545"
+        android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+        android:id="@+id/lookForText"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="76dp"
-        android:text="Large Text"
+        android:gravity="center"
+        android:text="Looking For"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#454545"
         android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/scanButton"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="48dp"
         android:gravity="center"
-        android:text="Then scan another QR code."
+        android:text="@string/QRCodeLabel"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#454545" />
 
-    <Button
-        android:id="@+id/scanButton"
-        android:layout_width="fill_parent"
+    <TextView
+        android:id="@+id/textDirection"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/textView3"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView3"
-        android:layout_marginTop="60dp"
-        android:gravity="center"
-        android:text="Scan QR Code"
-        android:textColor="#454545" />
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/lookForText"
+        android:layout_marginTop="17dp"
+        android:gravity="top|center"
+        android:text="Dirrection Information"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#000000"
+        android:textSize="20sp" />
 
 </RelativeLayout>

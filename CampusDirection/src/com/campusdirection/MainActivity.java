@@ -14,6 +14,8 @@ import android.os.Bundle;
 public class MainActivity extends Activity implements SearchFragment.SearchFragmentListener{
 
 	SearchFragment searchFragment;
+	String lookFor = "Kodiac Corner";
+	String direction = "";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -1,12 +1,9 @@
 package com.campusdirection;
 
-import com.google.zxing.integration.android.IntentIntegrator;
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,9 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class SearchFragment extends Fragment
 {
@@ -72,6 +67,8 @@ public class SearchFragment extends Fragment
 				 * 4. user have option to Start Over, this will available on main menu selection.
 				 *    this will return (pop) back to search_activity screen.
 				 */
+				
+				// launch Instruction/Result fragment after validate user input
 				instructionFrag();
 			}
 		});
