@@ -25,8 +25,8 @@ public class SearchFragment extends Fragment
    private SearchFragmentListener listener; 
    private Button searchButton;
    InstructionsFragment instructionsFragment;
+   MainActivity mainFrag = (MainActivity)getActivity();
    
-
    // set AddEditFragmentListener when Fragment attached   
    @Override
    public void onAttach(Activity activity)
@@ -67,17 +67,26 @@ public class SearchFragment extends Fragment
 				 * 4. user have option to Start Over, this will available on main menu selection.
 				 *    this will return (pop) back to search_activity screen.
 				 */
-				
-				// launch Instruction/Result fragment after validate user input
-				instructionFrag();
-			}
-		});
 
-		      
+				// launch Instruction/Result fragment after validate user input				
+				if(validateRoom())
+					instructionFrag();
+				else
+				{
+					//display dialog message to user re_enter room number again
+				}
+			}
+		});		      
 	   return view;
    }
-
    
+   // validate user input room
+   public boolean validateRoom()
+   {
+	   return true;
+   }
+
+   // launch Result/Instruction fragment for direction
    public void instructionFrag()
    {
 	   	instructionsFragment = new InstructionsFragment();
@@ -85,9 +94,9 @@ public class SearchFragment extends Fragment
 		FragmentTransaction ft = fm.beginTransaction();
 		ft.replace(R.id.fragmentContainer, instructionsFragment);
 		ft.addToBackStack(null);
-		ft.commit(); // causes CollectionListFragment to displa		   
-   
+		ft.commit(); // causes CollectionListFragment to displa		      
    }
+   
    // display this fragment's menu items
    @Override
    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
