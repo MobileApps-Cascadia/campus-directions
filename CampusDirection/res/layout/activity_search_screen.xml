@@ -22,26 +22,23 @@
         android:background="#99CCFF"
         android:orientation="horizontal" >
 
+        <Spinner
+            android:id="@+id/arrayBuilding"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:entries="@array/strArrayBuilding"
+            android:gravity="left" />
+"
+
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/textRoom"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="50"
             android:ems="10"
-            android:gravity="center"
-            android:hint="building" >
-
-            <requestFocus />
-        </EditText>
-
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="50"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="room number" >
+            android:gravity="left"
+            android:hint="Room Number" >
         </EditText>
     </LinearLayout>
 

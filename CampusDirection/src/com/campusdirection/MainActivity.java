@@ -14,11 +14,11 @@ import android.os.Bundle;
 public class MainActivity extends Activity implements SearchFragment.SearchFragmentListener{
 
 	SearchFragment searchFragment;
-	String lookFor = "Kodiac Corner";
-	String direction = "";
+	public static String lookFor = "Kodiac Corner";
+	public static String direction = "";
 	// Determine QR Code string
-	String scanBuild, inputBuild, inputRoom;
-	int scanFloor, scanSide, scanIndex, inputFloor;
+	public static String scanBuild, scanRoom, scanName, inputBuild, inputRoom;
+	public static int scanFloor, scanSide, scanIndex, inputFloor;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +49,10 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 			String result = intent.getStringExtra("SCAN_RESULT");
 			
 			splitScanResult(result); //split scan result
-			compileDirection();	//compile direction
 			
 			direction = "Here is your scan result ["+result+"]";
+			compileDirection();	//compile direction
+
 			//send result to new fragment.
 			FragmentManager fm = getFragmentManager();
 			InstructionsFragment newFrame = InstructionsFragment.newInstance();
@@ -61,7 +62,7 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 	
 	public void compileDirection()
 	{
-		
+		direction += "\n\n"+ getResources().getString(R.string.testDir, scanBuild, String.valueOf(scanFloor), scanRoom, String.valueOf(scanSide), String.valueOf(scanIndex), scanName); 
 	}
 	
 	// determine split the scan result content
@@ -72,5 +73,15 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 		scanFloor = Integer.parseInt(tempStr[1]);
 		scanSide = Integer.parseInt(tempStr[2]);
 		scanIndex = Integer.parseInt(tempStr[3]);
+		scanRoom = tempStr[4];
+		scanName = tempStr[5];
+	}
+	
+	// determine user input
+	public static void setSplitInput(String building, String room, int flr)
+	{
+		inputBuild = building;
+		inputRoom = room;
+		inputFloor = flr;
 	}
 }

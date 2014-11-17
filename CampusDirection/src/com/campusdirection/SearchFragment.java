@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 
 public class SearchFragment extends Fragment
 {
@@ -25,7 +27,8 @@ public class SearchFragment extends Fragment
    private SearchFragmentListener listener; 
    private Button searchButton;
    InstructionsFragment instructionsFragment;
-   MainActivity mainFrag = (MainActivity)getActivity();
+   private EditText textRoom;
+   private Spinner arrayBuilding;
    
    // set AddEditFragmentListener when Fragment attached   
    @Override
@@ -49,7 +52,10 @@ public class SearchFragment extends Fragment
    {
 	   super.onCreateView(inflater, container, savedInstanceState);    
 	   View view = inflater.inflate(R.layout.activity_search_screen, container, false);
-
+	   
+	   //get user input building/room number
+	   textRoom = (EditText) view.findViewById(R.id.textRoom);
+	   arrayBuilding = (Spinner) view.findViewById(R.id.arrayBuilding);	      
 	   searchButton = (Button) view.findViewById(R.id.searchButton);
 		
 	   searchButton.setOnClickListener(new View.OnClickListener() {
@@ -69,10 +75,11 @@ public class SearchFragment extends Fragment
 				 */
 
 				// launch Instruction/Result fragment after validate user input				
-				if(validateRoom())
+				if(validateRoom()){
+					splitInput();
 					instructionFrag();
-				else
-				{
+				}else{
+				
 					//display dialog message to user re_enter room number again
 				}
 			}
@@ -83,7 +90,26 @@ public class SearchFragment extends Fragment
    // validate user input room
    public boolean validateRoom()
    {
-	   return true;
+	   if(textRoom.getText().toString().trim().equals(""))
+		   return false;
+	   else{
+		   MainActivity.lookFor = String.valueOf(arrayBuilding.getSelectedItem())+"-"+textRoom.getText().toString();
+		   return true;
+	   }
+   }
+   
+   // split user input into piece (building, room, floor)
+   public void splitInput()
+   {
+   
+	   String tempBd = String.valueOf(arrayBuilding.getSelectedItem());
+	   String tempRm = textRoom.getText().toString();
+	   int tempFlr = Integer.parseInt((tempRm.replaceAll("[\\D]", "")).substring(0, 1));
+	   
+	   //verify floor level base on user input room number
+	   int tempNum = Integer.parseInt(tempRm.replaceAll("[\\D]", ""));
+	   if(tempNum < 100) tempFlr = 0;
+	   MainActivity.setSplitInput(tempBd, tempRm, tempFlr);
    }
 
    // launch Result/Instruction fragment for direction

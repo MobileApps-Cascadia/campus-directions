@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="strArrayBuilding">
+        <item>CC1</item>
+        <item>CC2</item>
+        <item>CC3</item>
+    </string-array>
+
+
+</resources>

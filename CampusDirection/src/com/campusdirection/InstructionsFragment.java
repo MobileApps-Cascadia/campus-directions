@@ -4,6 +4,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
@@ -21,6 +22,7 @@ public class InstructionsFragment extends Fragment {
 	private TextView textDirection;
 	private TextView textLookFor;
 	private static InstructionsFragment fragment;
+	
 
 
 	public static InstructionsFragment newInstance() {
@@ -39,12 +41,15 @@ public class InstructionsFragment extends Fragment {
 		View v = inflater.inflate(R.layout.activity_instructions, parent, false);
 		
 		// display what user look for on top of screen.
+		String tempStr = getResources().getString(R.string.lookForStr, MainActivity.lookFor);
+		tempStr += "\n"+ getResources().getString(R.string.testLook, MainActivity.inputBuild, String.valueOf(MainActivity.inputFloor), MainActivity.inputRoom);
+//		String tempStr = "\n"+ getResources().getString(R.string.testLook, "CC2", "2", "230");
 		textLookFor = (TextView) v.findViewById(R.id.lookForText);
-		textLookFor.setText(getResources().getString(R.string.lookForStr, ((MainActivity)getActivity()).lookFor));
+		textLookFor.setText(tempStr);
 
 		
 		textDirection = (TextView) v.findViewById(R.id.textDirection);
-		String tempDirection = ((MainActivity)getActivity()).direction;
+		String tempDirection = MainActivity.direction;
 		if(tempDirection == "" )
 			textDirection.setText(getResources().getString(R.string.directionStr));
 		else
