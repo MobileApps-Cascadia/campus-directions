@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:textAlignment="center" >
-    <!-- android:background="@drawable/background_main" -->
+    android:textAlignment="center" 
+    android:background="@drawable/background_main">
     
     <Button
         android:id="@+id/scanButton"
@@ -13,7 +13,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:gravity="center"
-        android:text="Scan QR Code"
+        android:text="@string/scan"
         android:textColor="#454545"
         android:textSize="24sp" />
 
@@ -24,7 +24,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:gravity="center"
-        android:text="Looking For"
+        android:text="@string/lookingFor"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="20sp" />
 
@@ -49,7 +49,7 @@
         android:layout_below="@+id/lookForText"
         android:layout_marginTop="17dp"
         android:gravity="top|center"
-        android:text="Dirrection Information"
+        android:text="@string/directionInfo"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#000000"
         android:textSize="20sp" />

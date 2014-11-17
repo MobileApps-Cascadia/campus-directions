@@ -9,6 +9,15 @@
     <string name="QRCodeLabel">Scan New QR Code Again Anytime</string>
     <string name="directionStr">Please find QR Code near by then click on Scan QR Code button below.</string>
     
+   <string name="bookstore">Book Store</string>
+   <string name="mobiusHall">Mobius Hall</string>
+   <string name="library">Library</string>
+   <string name="kodiacCorner">Kodiac Corner</string>
+   <string name="search">Search</string>
+   <string name="where">Where do you want to go?</string>
+   <string name="scan">Scan QR Code</string>
+   <string name="lookingFor">Looking for</string>
+   <string name="directionInfo">Direction information</string>
    
     <!-- Testing string section -->
     <string name="testLook">Looking String break down:\nBuilding: %1$s\nFloor: %2$s\nRoom Number: %3$s</string>
