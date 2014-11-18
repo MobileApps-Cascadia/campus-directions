@@ -2,6 +2,7 @@
 
 package com.campusdirection;
 
+import com.campusdirection.R.string;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -62,6 +63,27 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 	
 	public void compileDirection()
 	{
+		int current = Integer.parseInt(scanRoom.replaceAll("[\\D]", ""));      //here we are making our strings for rooms into integers
+		int destination = Integer.parseInt(inputRoom.replaceAll("[\\D]", ""));
+		if (current== destination+1 || current == destination-1 ){             //if the destination is only +-1 from your location it is behind you.
+			direction +="Turn around to find your destination";
+		}
+		else if (current > destination){
+			if (scanSide == 1){
+				direction +="Take a right and go forward";   //This should be made the only text that displays on the fragment
+			}
+			else if (scanSide ==0){
+				direction+="Take a left and go forward";
+			}
+		}
+		else if (current<destination){
+			if (scanSide == 1){
+				direction +="Take a left and go forward";   
+			}
+			else if (scanSide ==0){
+				direction+="Take a right and go forward";
+			}
+		}
 		direction += "\n\n"+ getResources().getString(R.string.testDir, scanBuild, String.valueOf(scanFloor), scanRoom, String.valueOf(scanSide), String.valueOf(scanIndex), scanName); 
 	}
 	
