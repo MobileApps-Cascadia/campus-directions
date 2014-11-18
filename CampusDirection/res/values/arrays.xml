@@ -6,6 +6,22 @@
         <item>CC2</item>
         <item>CC3</item>
     </string-array>
-
+ <string-array name="CC2">
+        <item>230</item>
+        <item>231</item>
+        <item>220</item>
+        <item>221</item>
+        <item>210</item>
+        <item>211</item>
+        <item>202</item>
+        <item>205</item>
+        <item>240</item>
+        <item>243</item>
+        <item>244</item>
+        <item>245</item>
+        <item>246</item>
+       
+    </string-array>
+    
 
 </resources>
