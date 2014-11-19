@@ -18,6 +18,15 @@
    <string name="scan">Scan QR Code</string>
    <string name="lookingFor">Looking for</string>
    <string name="directionInfo">Direction information</string>
+   <string name="okBut">OK</string>
+   <string name="cancelBut">Cancel</string>
+   <string name="startOver">Start Over</string>
+   <string name="roomTitle">Room Not Found</string>
+   <string name="bldTitle">Building Not Found</string>
+   <string name="emptyInput">Room Not Enter</string>
+   <string name="msgInput">Room you entered is invalid or empty field.\nPlease enter room number you\'re looking for.</string>
+   <string name="invalidRoom">Room number [%1$s] you entered not found.\nPlease verify room number and re-enter following format Building-Room.\nFor example: CC1-230.</string>
+   <string name="invalidBuilding">The building [%1$s] you entered not found.\nPlease verify building and re-enter following format CC1 exmple.</string>
    
     <!-- Testing string section -->
     <string name="testLook">Looking String break down:\nBuilding: %1$s\nFloor: %2$s\nRoom Number: %3$s</string>

@@ -1,12 +1,18 @@
 package com.campusdirection;
 
+import java.util.Arrays;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -58,6 +64,7 @@ public class SearchFragment extends Fragment
 	   
 	   //get user input building/room number
 	   textRoom = (EditText) view.findViewById(R.id.textRoom);
+//	   textRoom.setRawInputType(InputType.TYPE_CLASS_NUMBER);
 	   arrayBuilding = (Spinner) view.findViewById(R.id.arrayBuilding);	      
 	   searchButton = (Button) view.findViewById(R.id.searchButton);
 		
@@ -84,10 +91,12 @@ public class SearchFragment extends Fragment
 						instructionFrag();	//launching instruction/result fragment
 					else{
 						//display dialog message to ask user re-enter room number.
+						showDialog(R.string.roomTitle, R.string.invalidRoom, MainActivity.lookFor.toString());
 					}						
 				}else{
 				
 					//display dialog message to ask user enter room. Room number field can't be leave blank.
+					showDialog(R.string.emptyInput, R.string.msgInput, "");
 				}
 			}
 		});		      
@@ -99,52 +108,50 @@ public class SearchFragment extends Fragment
    {
 	   Resources res = getResources();
 	   TypedArray tempBld;
-//	   String[] tempFlr;
 	   switch(MainActivity.inputBuild){
 	   		case "CC1":
-	   			tempBld = res.obtainTypedArray(R.array.CC1);
-	   			return verifyRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));
+	   			if(MainActivity.inputFloor >= 0 && MainActivity.inputFloor < 4){
+	   				tempBld = res.obtainTypedArray(R.array.CC1);
+	   				return verifyRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));
+	   			}else return false;
 	   		case "CC2":
-	   			break;
+	   			if(MainActivity.inputFloor >= 0 && MainActivity.inputFloor < 4){
+	   				tempBld = res.obtainTypedArray(R.array.CC2);
+	   				return verifyRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));
+	   			}else return false;
 	   		case "CC3":
-	   			break;
+	   			if(MainActivity.inputFloor > 0 && MainActivity.inputFloor < 3){
+	   				tempBld = res.obtainTypedArray(R.array.CC3);
+	   				return verifyRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));
+	   			}else return false;
 	   		default:
-	   			return false;
+	   			return false; //building is invalid
 	   }
-	//   tempBld.recycle();
-	   return true;
-	   
-	   /*
-	   TypedArray ta = res.obtainTypedArray(R.array.array0);
-	   int n = ta.length();
-	   String[][] array = new String[n][];
-	   for (int i = 0; i < n; ++i) {
-	       int id = ta.getResourceId(i, 0);
-	       if (id > 0) {
-	           array[i] = res.getStringArray(id);
-	       } else {
-	           // something wrong with the XML
-	       }
-	   }
-	   ta.recycle(); // Important!
-	   */
    }
    
    // check existing room per floor plan
    public boolean verifyRoom(String[] arr)
    {
-	   Toast.makeText(getActivity(), String.valueOf(arr.length), Toast.LENGTH_SHORT).show();
-	   return true;
+//	   Toast.makeText(getActivity(), String.valueOf(Arrays.asList(arr).contains(MainActivity.inputRoom)), Toast.LENGTH_SHORT).show();
+		return Arrays.asList(arr).contains(MainActivity.inputRoom);
    }
    
    // check to see if user enter room number
    public boolean validateRoom()
    {
-	   if(textRoom.getText().toString().trim().equals(""))
+	   String tempRm = textRoom.getText().toString().trim();
+	   String tempRmRep = tempRm.replaceAll("[\\D]", "");
+	   
+	   if(tempRm.equals(""))
 		   return false;
 	   else{
-		   MainActivity.lookFor = String.valueOf(arrayBuilding.getSelectedItem())+"-"+textRoom.getText().toString();
-		   return true;
+		   if(tempRmRep == "")
+			   return false;
+//			   Toast.makeText(getActivity(), String.valueOf(tempRmRep), Toast.LENGTH_SHORT).show();
+		   else{   
+			   MainActivity.lookFor = String.valueOf(arrayBuilding.getSelectedItem())+"-"+textRoom.getText().toString().trim();
+			   return true;
+		   }
 	   }
    }
    
@@ -195,6 +202,32 @@ public class SearchFragment extends Fragment
       return super.onOptionsItemSelected(item); // call super's method
    }
    
-} // end class AddEditFragment
+   // display an AlertDialog when invalid room detect
+   public void showDialog(final int msgTitle, final int msgFormat, final String str)
+   {
+	    AlertDialog.Builder displayMsg = new AlertDialog.Builder(getActivity());
+	    displayMsg.setTitle(msgTitle);
+	    displayMsg.setMessage(getResources().getString(msgFormat, str));
+ 
+	    displayMsg.setPositiveButton(getResources().getText(R.string.okBut),
+	    new DialogInterface.OnClickListener() {
+	    	public void onClick(DialogInterface dialog, int arg1) {
+	    		//do something when OK button click
+        		//leave blank if just close window only.
+        	}
+        });
+	    /*
+	    displayMsg.setNegativeButton(getResources().getText(R.string.cancelBut),
+	    	new DialogInterface.OnClickListener(){
+        	public void onClick(DialogInterface dialog, int arg1) {
+        		//do something when Cancel button click
+        		//leave blank if just close window only.
+        	 }
+        });
+ 		*/
+        // display message to user
+	    displayMsg.show();
+    }   
+}
 
 

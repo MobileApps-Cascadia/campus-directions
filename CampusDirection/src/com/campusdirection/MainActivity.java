@@ -91,12 +91,16 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 	public void splitScanResult(String str)
 	{
 		String[] tempStr = str.split("-");
-		scanBuild = tempStr[0];
+		scanBuild = tempStr[0].trim();
 		scanFloor = Integer.parseInt(tempStr[1]);
 		scanSide = Integer.parseInt(tempStr[2]);
 		scanIndex = Integer.parseInt(tempStr[3]);
-		scanRoom = tempStr[4];
-		scanName = tempStr[5];
+		scanRoom = tempStr[4].trim();
+		//check to see if location name giving from QR code
+		if(tempStr.length == 6)
+			scanName = tempStr[5].trim();
+		else
+			scanName = "";
 	}
 	
 	// determine user input
