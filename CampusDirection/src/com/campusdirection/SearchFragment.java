@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class SearchFragment extends Fragment
 {
@@ -76,18 +79,65 @@ public class SearchFragment extends Fragment
 
 				// launch Instruction/Result fragment after validate user input				
 				if(validateRoom()){
-					splitInput();
-					instructionFrag();
+					splitInput();	//determine floor number base on user enter room number
+					if(isRoom())
+						instructionFrag();	//launching instruction/result fragment
+					else{
+						//display dialog message to ask user re-enter room number.
+					}						
 				}else{
 				
-					//display dialog message to user re_enter room number again
+					//display dialog message to ask user enter room. Room number field can't be leave blank.
 				}
 			}
 		});		      
 	   return view;
    }
    
-   // validate user input room
+   // check to see if the room user enter existed in that building/floor
+   public boolean isRoom()
+   {
+	   Resources res = getResources();
+	   TypedArray tempBld;
+//	   String[] tempFlr;
+	   switch(MainActivity.inputBuild){
+	   		case "CC1":
+	   			tempBld = res.obtainTypedArray(R.array.CC1);
+	   			return verifyRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));
+	   		case "CC2":
+	   			break;
+	   		case "CC3":
+	   			break;
+	   		default:
+	   			return false;
+	   }
+	//   tempBld.recycle();
+	   return true;
+	   
+	   /*
+	   TypedArray ta = res.obtainTypedArray(R.array.array0);
+	   int n = ta.length();
+	   String[][] array = new String[n][];
+	   for (int i = 0; i < n; ++i) {
+	       int id = ta.getResourceId(i, 0);
+	       if (id > 0) {
+	           array[i] = res.getStringArray(id);
+	       } else {
+	           // something wrong with the XML
+	       }
+	   }
+	   ta.recycle(); // Important!
+	   */
+   }
+   
+   // check existing room per floor plan
+   public boolean verifyRoom(String[] arr)
+   {
+	   Toast.makeText(getActivity(), String.valueOf(arr.length), Toast.LENGTH_SHORT).show();
+	   return true;
+   }
+   
+   // check to see if user enter room number
    public boolean validateRoom()
    {
 	   if(textRoom.getText().toString().trim().equals(""))

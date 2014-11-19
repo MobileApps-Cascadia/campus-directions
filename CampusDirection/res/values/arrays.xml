@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- List of building name for dropdown box in search layout -->
     <string-array name="strArrayBuilding">
         <item>CC1</item>
         <item>CC2</item>
         <item>CC3</item>
     </string-array>
- <string-array name="CC2">
+    
+    <!-- Room layout on each floor from building, format: Building_Floor -->
+    <!-- Room floor plan for building CC1 -->
+    <string-array name="CC1_0">
+        
+    </string-array>
+    <string-array name="CC1_1">
+        
+    </string-array>
+    	<string-array name="CC1_2">
         <item>230</item>
         <item>231</item>
         <item>220</item>
@@ -19,9 +29,55 @@
         <item>243</item>
         <item>244</item>
         <item>245</item>
-        <item>246</item>
-       
+        <item>246</item>       
     </string-array>
+   	<string-array name="CC1_3">
+        
+    </string-array>
+    <!-- Room floor plan for building CC2 -->
+   	<string-array name="CC2_0">
+        
+    </string-array>
+    <string-array name="CC2_1">
+        
+    </string-array>
+   	<string-array name="CC2_2">
+        
+    </string-array>
+    <string-array name="CC2_3">
+        
+    </string-array>
+    <!-- Room floor plan for building CC3 -->
+    <string-array name="CC3_0"><!-- There isn't any floor 0/basicment for this building -->        
+    </string-array>
+    <string-array name="CC3_1"><!-- There isn't any floor 0/basicment for this building -->        
     
-
+    </string-array>
+    <string-array name="CC3_2"><!-- There isn't any floor 0/basicment for this building -->        
+    
+    </string-array>
+    <string-array name="CC3_3"><!-- There isn't any floor 0/basicment for this building -->        
+    
+    </string-array>
+        		
+	<!-- 2D array floor plan for each building -->
+	<string-array name="CC1">
+	    <item>@array/CC1_0</item>
+	    <item>@array/CC1_1</item>
+	   	<item>@array/CC1_2</item>
+	   	<item>@array/CC1_3</item>	
+	</string-array>
+	<string-array name="CC2">
+	    <item>@array/CC2_0</item>
+	    <item>@array/CC2_1</item>
+	   	<item>@array/CC2_2</item>
+	   	<item>@array/CC2_3</item>	
+	</string-array>
+	<string-array name="CC3">
+	    <item>@array/CC3_0</item>
+	    <item>@array/CC3_1</item>
+	   	<item>@array/CC3_2</item>
+	   	<item>@array/CC3_3</item>	
+	</string-array>
+	
 </resources>
