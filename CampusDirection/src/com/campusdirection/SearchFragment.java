@@ -1,10 +1,18 @@
 package com.campusdirection;
 
+import java.util.Arrays;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class SearchFragment extends Fragment
 {
@@ -55,6 +64,7 @@ public class SearchFragment extends Fragment
 	   
 	   //get user input building/room number
 	   textRoom = (EditText) view.findViewById(R.id.textRoom);
+//	   textRoom.setRawInputType(InputType.TYPE_CLASS_NUMBER);
 	   arrayBuilding = (Spinner) view.findViewById(R.id.arrayBuilding);	      
 	   searchButton = (Button) view.findViewById(R.id.searchButton);
 		
@@ -76,25 +86,72 @@ public class SearchFragment extends Fragment
 
 				// launch Instruction/Result fragment after validate user input				
 				if(validateRoom()){
-					splitInput();
-					instructionFrag();
+					splitInput();	//determine floor number base on user enter room number
+					if(isRoom())
+						instructionFrag();	//launching instruction/result fragment
+					else{
+						//display dialog message to ask user re-enter room number.
+						showDialog(R.string.roomTitle, R.string.invalidRoom, MainActivity.lookFor.toString());
+					}						
 				}else{
 				
-					//display dialog message to user re_enter room number again
+					//display dialog message to ask user enter room. Room number field can't be leave blank.
+					showDialog(R.string.emptyInput, R.string.msgInput, "");
 				}
 			}
 		});		      
 	   return view;
    }
    
-   // validate user input room
+   // check to see if the room user enter existed in that building/floor
+   public boolean isRoom()
+   {
+	   Resources res = getResources();
+	   TypedArray tempBld;
+	   switch(MainActivity.inputBuild){
+	   		case "CC1":
+	   			if(MainActivity.inputFloor >= 0 && MainActivity.inputFloor < 4){
+	   				tempBld = res.obtainTypedArray(R.array.CC1);
+	   				return verifyRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));
+	   			}else return false;
+	   		case "CC2":
+	   			if(MainActivity.inputFloor >= 0 && MainActivity.inputFloor < 4){
+	   				tempBld = res.obtainTypedArray(R.array.CC2);
+	   				return verifyRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));
+	   			}else return false;
+	   		case "CC3":
+	   			if(MainActivity.inputFloor > 0 && MainActivity.inputFloor < 3){
+	   				tempBld = res.obtainTypedArray(R.array.CC3);
+	   				return verifyRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));
+	   			}else return false;
+	   		default:
+	   			return false; //building is invalid
+	   }
+   }
+   
+   // check existing room per floor plan
+   public boolean verifyRoom(String[] arr)
+   {
+//	   Toast.makeText(getActivity(), String.valueOf(Arrays.asList(arr).contains(MainActivity.inputRoom)), Toast.LENGTH_SHORT).show();
+		return Arrays.asList(arr).contains(MainActivity.inputRoom);
+   }
+   
+   // check to see if user enter room number
    public boolean validateRoom()
    {
-	   if(textRoom.getText().toString().trim().equals(""))
+	   String tempRm = textRoom.getText().toString().trim();
+	   String tempRmRep = tempRm.replaceAll("[\\D]", "");
+	   
+	   if(tempRm.equals(""))
 		   return false;
 	   else{
-		   MainActivity.lookFor = String.valueOf(arrayBuilding.getSelectedItem())+"-"+textRoom.getText().toString();
-		   return true;
+		   if(tempRmRep == "")
+			   return false;
+//			   Toast.makeText(getActivity(), String.valueOf(tempRmRep), Toast.LENGTH_SHORT).show();
+		   else{   
+			   MainActivity.lookFor = String.valueOf(arrayBuilding.getSelectedItem())+"-"+textRoom.getText().toString().trim();
+			   return true;
+		   }
 	   }
    }
    
@@ -145,6 +202,32 @@ public class SearchFragment extends Fragment
       return super.onOptionsItemSelected(item); // call super's method
    }
    
-} // end class AddEditFragment
+   // display an AlertDialog when invalid room detect
+   public void showDialog(final int msgTitle, final int msgFormat, final String str)
+   {
+	    AlertDialog.Builder displayMsg = new AlertDialog.Builder(getActivity());
+	    displayMsg.setTitle(msgTitle);
+	    displayMsg.setMessage(getResources().getString(msgFormat, str));
+ 
+	    displayMsg.setPositiveButton(getResources().getText(R.string.okBut),
+	    new DialogInterface.OnClickListener() {
+	    	public void onClick(DialogInterface dialog, int arg1) {
+	    		//do something when OK button click
+        		//leave blank if just close window only.
+        	}
+        });
+	    /*
+	    displayMsg.setNegativeButton(getResources().getText(R.string.cancelBut),
+	    	new DialogInterface.OnClickListener(){
+        	public void onClick(DialogInterface dialog, int arg1) {
+        		//do something when Cancel button click
+        		//leave blank if just close window only.
+        	 }
+        });
+ 		*/
+        // display message to user
+	    displayMsg.show();
+    }   
+}
 
 
