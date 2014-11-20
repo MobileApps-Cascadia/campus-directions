@@ -2,6 +2,8 @@
 
 package com.campusdirection;
 
+import java.util.Arrays;
+
 import com.campusdirection.R.string;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -10,7 +12,10 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements SearchFragment.SearchFragmentListener{
 
@@ -61,6 +66,30 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 		}
 	}
 	
+	// return index value (integer) from an array where room is match.
+	public int getRoomIndex()
+	{
+		Resources res = getResources();
+		TypedArray tempBld = null;
+		switch(inputBuild){
+	   		case "CC1":
+	   			tempBld = res.obtainTypedArray(R.array.CC1);
+	   			break;
+	   		case "CC2":
+	   			tempBld = res.obtainTypedArray(R.array.CC2);
+	   			break;
+	   		case "CC3":
+	   			tempBld = res.obtainTypedArray(R.array.CC3);
+	   			break;
+	   		default:
+	   			return -1; // invalid build 
+		}
+		//return index value(integer) of room location in an array base
+		//from user input building and room number
+		return Arrays.asList(res.getStringArray(tempBld.getResourceId(inputFloor, 0))).indexOf(inputRoom);
+	}
+
+
 	public void compileDirection()
 	{
 		int current = Integer.parseInt(scanRoom.replaceAll("[\\D]", ""));      //here we are making our strings for rooms into integers
