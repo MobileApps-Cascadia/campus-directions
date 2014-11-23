@@ -57,12 +57,55 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 			splitScanResult(result); //split scan result
 			
 			direction = "Here is your scan result ["+result+"]";
-			compileDirection();	//compile direction
+//			compileDirection();	//compile direction
+			compileDir();
 
 			//send result to new fragment.
 			FragmentManager fm = getFragmentManager();
 			InstructionsFragment newFrame = InstructionsFragment.newInstance();
 			fm.beginTransaction().replace(R.id.fragmentContainer, newFrame).commit();
+		}
+	}
+	
+	public void compileDir()
+	{
+		direction = "Testing\n\n";
+		// is building input/scan the same
+		if(scanBuild.equals(inputBuild)){
+			// is the input/scan floor the same
+			if(inputFloor == scanFloor){
+				//determine room direction
+				compileDirection();
+				//also determine is looking for room locate special location
+				compileSpecialDirection();
+			}else{
+				//determine Floor to Floor direction
+				if(inputFloor > scanFloor)
+					direction += getResources().getString(R.string.floorDir, "UP", stringFloor(inputFloor));
+				else
+					direction += getResources().getString(R.string.floorDir, "DOWN", stringFloor(inputFloor));				
+				//also brief determine room direction as well
+			}			
+		}else{
+			//determine Building to Building direction
+			direction += "Building not the same.";
+		}
+	}
+	
+	// determine floor level and return text value
+	public String stringFloor(int flr)
+	{
+		switch(flr)
+		{
+			case 0: return "Level 0";
+			case 1: return "1st";
+			case 2: return "2nd";
+			case 3: return "3rd";
+			case 4: return "4th";
+			case 5: return "5th";
+			case 6: return "6th";
+			case 7: return "7th";
+			default: return "";
 		}
 	}
 	
@@ -89,7 +132,12 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 		return Arrays.asList(res.getStringArray(tempBld.getResourceId(inputFloor, 0))).indexOf(inputRoom);
 	}
 
-
+	// compile direction if the room is locate in hiding location.
+	public void compileSpecialDirection()
+	{
+		
+	}
+	
 	public void compileDirection()
 	{
 		int current = Integer.parseInt(scanRoom.replaceAll("[\\D]", ""));      //here we are making our strings for rooms into integers
@@ -139,4 +187,6 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 		inputRoom = room;
 		inputFloor = flr;
 	}
+	
+	
 }

@@ -28,6 +28,13 @@
    <string name="invalidRoom">Room number [%1$s] you entered not found.\nPlease verify room number and re-enter following format Building-Room.\nFor example: CC1-230.</string>
    <string name="invalidBuilding">The building [%1$s] you entered not found.\nPlease verify building and re-enter following format CC1 exmple.</string>
    
+   <!-- Direction string format -->
+   <string name="roomDir">Take a %1$s and go forward.</string>
+   <string name="floorDir">Go %1$s to %2$s floor.</string>
+   <string name="roomLoc">Room is on your %1$s.</string>
+   <string name="buildingDir"></string>
+   <string name="specialDir">Room location is %1$s.</string>
+   
     <!-- Testing string section -->
     <string name="testLook">Looking String break down:\nBuilding: %1$s\nFloor: %2$s\nRoom Number: %3$s</string>
     <string name="testDir">Scan String break down:\nBuilding: %1$s\nFloor: %2$s\nRoom Number: %3$s\nRoom Side: %4$s\nIndex Location: %5$s\nLoc Name: %6$s</string>
