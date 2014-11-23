@@ -69,27 +69,31 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 	
 	public void compileDir()
 	{
-		direction = "Testing\n\n";
-		// is building input/scan the same
-		if(scanBuild.equals(inputBuild)){
-			// is the input/scan floor the same
-			if(inputFloor == scanFloor){
-				//determine room direction
-				compileDirection();
-				//also determine is looking for room locate special location
-				compileSpecialDirection();
-			}else{
-				//determine Floor to Floor direction
-				if(inputFloor > scanFloor)
-					direction += getResources().getString(R.string.floorDir, "UP", stringFloor(inputFloor));
-				else
-					direction += getResources().getString(R.string.floorDir, "DOWN", stringFloor(inputFloor));				
-				//also brief determine room direction as well
-			}			
-		}else{
-			//determine Building to Building direction
-			direction += "Building not the same.";
+		int current = Integer.parseInt(scanRoom.replaceAll("[\\D]", ""));      //here we are making our strings for rooms into integers
+		int destination = Integer.parseInt(inputRoom.replaceAll("[\\D]", ""));
+		
+		int currentIndex = scanIndex;
+		int destinationIndex = getRoomIndex();
+		if (current== destination+1 || current == destination-1 ){             //if the destination is only +-1 from your location it is behind you.
+			direction +="Turn around to find your destination";
 		}
+		else if (currentIndex < destinationIndex){
+			if (scanSide == 1){
+				direction +="Take a right and go forward";   //This should be made the only text that displays on the fragment
+			}
+			else if (scanSide ==0){
+				direction+="Take a left and go forward";
+			}
+		}
+		else if (currentIndex > destinationIndex){
+			if (scanSide == 1){
+				direction +="Take a left and go forward";   
+			}
+			else if (scanSide ==0){
+				direction+="Take a right and go forward";
+			}
+		}
+		direction += "\n\n"+ getResources().getString(R.string.testDir, scanBuild, String.valueOf(scanFloor), scanRoom, String.valueOf(scanSide), String.valueOf(scanIndex), scanName); 
 	}
 	
 	// determine floor level and return text value
