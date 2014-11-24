@@ -42,7 +42,7 @@ public class InstructionsFragment extends Fragment {
 		
 		// display what user look for on top of screen.
 		String tempStr = getResources().getString(R.string.lookForStr, MainActivity.lookFor);
-		tempStr += "\n"+ getResources().getString(R.string.testLook, MainActivity.inputBuild, String.valueOf(MainActivity.inputFloor), MainActivity.inputRoom);
+		tempStr += "\n"+ getResources().getString(R.string.yourLocation, MainActivity.scanBuild, String.valueOf(MainActivity.scanFloor));
 //		String tempStr = "\n"+ getResources().getString(R.string.testLook, "CC2", "2", "230");
 		textLookFor = (TextView) v.findViewById(R.id.lookForText);
 		textLookFor.setText(tempStr);

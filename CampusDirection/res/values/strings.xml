@@ -34,9 +34,12 @@
    <string name="roomLoc">Room is on your %1$s.</string>
    <string name="buildingDir"></string>
    <string name="specialDir">Room location is %1$s.</string>
+   <string name="cc1FloorDir">Take the main stair from CC1 building to %1$s floor and turn %2$s. The room is locate on your %3$s.</string>
+   <string name="cc3FloorDir">Take the main stair to %1$s floor and turn %2$s. The room is locate on your %3$s.</string>
+   <string name="yourLocation">Your Location:\nBuilding: %1$s, Floor: %2$s</string>
    
     <!-- Testing string section -->
-    <string name="testLook">Looking String break down:\nBuilding: %1$s\nFloor: %2$s\nRoom Number: %3$s</string>
+    <string name="testLook">Looking String break down:\nBuilding: %1$s\nFloor: %2$s\nRoom Number: %3$s\nRoom Location: %4$s</string>
     <string name="testDir">Scan String break down:\nBuilding: %1$s\nFloor: %2$s\nRoom Number: %3$s\nRoom Side: %4$s\nIndex Location: %5$s\nLoc Name: %6$s</string>
     <!-- End testing -->
     

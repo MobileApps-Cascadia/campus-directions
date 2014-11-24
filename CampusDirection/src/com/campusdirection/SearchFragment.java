@@ -72,6 +72,7 @@ public class SearchFragment extends Fragment
 	
 			@Override
 			public void onClick(View v) {
+				MainActivity.direction = "";	//reset direction string
 
 				/* when searchButton click,
 				 * do all the validation to make sure room number user enter is valid.
@@ -162,11 +163,12 @@ public class SearchFragment extends Fragment
 	   String tempBd = String.valueOf(arrayBuilding.getSelectedItem());
 	   String tempRm = textRoom.getText().toString();
 	   int tempFlr = Integer.parseInt((tempRm.replaceAll("[\\D]", "")).substring(0, 1));
+	   int tempLoc = Integer.parseInt((tempRm.replaceAll("[\\D]", "")).substring(1, 2));
 	   
 	   //verify floor level base on user input room number
 	   int tempNum = Integer.parseInt(tempRm.replaceAll("[\\D]", ""));
 	   if(tempNum < 100) tempFlr = 0;
-	   MainActivity.setSplitInput(tempBd, tempRm, tempFlr);
+	   MainActivity.setSplitInput(tempBd, tempRm, tempFlr, tempLoc);
    }
 
    // launch Result/Instruction fragment for direction
