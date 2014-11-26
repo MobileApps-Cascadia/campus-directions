@@ -74,29 +74,78 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 			// is the input/scan floor the same
 			if(inputFloor == scanFloor){
 				//determine room direction
-				compileRoomDir();
+				RoomDir();
 				//also determine is looking for room locate special location
 				compileSpecialDir();
 			}else{
 				//determine Floor to Floor direction
-				if(inputFloor > scanFloor)
-					direction += getResources().getString(R.string.floorDir, "UP", stringFloor(inputFloor));
-				else
-					direction += getResources().getString(R.string.floorDir, "DOWN", stringFloor(inputFloor));				
+				floorDirection();
+
 				//also brief determine room direction as well
-				direction += "\n";
 				basicRoomDirection();
 			}			
 		}else{
 			//determine Building to Building direction
 			if((scanBuild.equals("CC1") && inputBuild.equals("CC2")) || (scanBuild.equals("CC2") && inputBuild.equals("CC1")))
 			{
+				//determine Floor to Floor direction
+				floorDirection();
+
 				//user inside building CC1 and looking for room in building CC2 and by versa
-				
+				switch(scanBuild){
+					case "CC1":	// user location in CC1 building and want to go to CC2 building
+						if(scanSide == 1)
+							direction += getResources().getString(R.string.roomDir, "RIGHT", myRoomLocation("right"));
+						else if(scanSide == 0)
+							direction += getResources().getString(R.string.roomDir, "LEFT", myRoomLocation("right"));
+						break;
+					case "CC2": // user location in CC2 building and want to go to CC1 building
+						direction += "\nGo forward down the hall, the room is locate on your " + myRoomLocation("left") + ".";
+						break;
+					default:
+						direction += "Building is unkown. Please rescan bar code again.";
+						break;
+				}				
 			}else{
-				
+				if(inputBuild.equals("CC3")){
+					if(scanBuild.equals("CC1") || scanBuild.equals("CC2")){
+						//user from CC3 and want to go to CC1 or CC2
+						if(scanFloor != 1){
+							floorDirection();
+						}
+						direction += getResources().getString(R.string.exitCC1, inputBuild, "RIGHT");
+
+					}else if(scanBuild.equals("some other building here")){
+						//user from CC3 and want to go to other building
+					}
+				}else if(inputBuild.equals("CC1") || inputBuild.equals("CC2")){
+					if(scanBuild.equals("CC3")){
+						//user from building CC1 or CC2 want to go to CC3 building
+						if(scanFloor != 1){
+							floorDirection();
+						}
+						direction += getResources().getString(R.string.exitCC3, inputBuild, "LEFT");
+					}else if(scanBuild.equals("some other building here such library or bookstore")){
+						//user from CC1 or CC2 and want to go to other building
+					}
+				}				
 			}
-			direction += "Building not the same.";
+		}
+	}
+	
+	//determine Floor to Floor direction
+	public void floorDirection()
+	{
+		if(inputBuild.equals("CC1") || inputBuild.equals("CC2")){
+			if(inputFloor > scanFloor)
+				direction += getResources().getString(R.string.floorDir, "UP", stringFloor(inputFloor))+"\n";
+			else if(inputFloor < scanFloor)
+				direction += getResources().getString(R.string.floorDir, "DOWN", stringFloor(inputFloor))+"\n";
+		}else{
+			if(scanFloor < 1)
+				direction += getResources().getString(R.string.floorDir, "UP", stringFloor(1))+"\n";
+			else if(scanFloor > 1)
+				direction += getResources().getString(R.string.floorDir, "DOWN", stringFloor(1))+"\n";			
 		}
 	}
 	
@@ -114,9 +163,9 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 		else if(inputBuild.equals("CC3"))
 		{
 			if(inputLocation <= 3 && inputLocation >= 2)
-				direction += getResources().getString(R.string.cc3FloorDir, stringFloor(inputFloor), "LEFT", myRoomLocation("left"));
+				direction += getResources().getString(R.string.cc3FloorDir, stringFloor(inputFloor), "RIGHT", myRoomLocation("left"));
 			else if(inputLocation >= 0 && inputLocation <= 1)
-				direction += getResources().getString(R.string.cc3FloorDir, stringFloor(inputFloor), "RIGHT", myRoomLocation("right"));			
+				direction += getResources().getString(R.string.cc3FloorDir, stringFloor(inputFloor), "LEFT", myRoomLocation("right"));			
 		}
 	}
 	
@@ -182,34 +231,33 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 	}
 	
 	// determine room direction on the same floor.
-	public void compileRoomDir()
+	public void RoomDir()
 	{
 		int current = Integer.parseInt(scanRoom.replaceAll("[\\D]", ""));      //here we are making our strings for rooms into integers
 		int destination = Integer.parseInt(inputRoom.replaceAll("[\\D]", ""));
 		
-		int currentIndex = scanIndex;
-		int destinationIndex = getRoomIndex();
-		if (current== destination+1 || current == destination-1 ){             //if the destination is only +-1 from your location it is behind you.
-			direction +="Turn around to find your destination";
+		if (current == destination+1 || current == destination-1 ){             //if the destination is only +-1 from your location it is behind you.
+//			direction += "Turn around to find your destination";
+			direction += getResources().getString(R.string.destination, inputRoom);
 		}
-		else if (currentIndex < destinationIndex){
+		else if (scanIndex < getRoomIndex()){
 			if (scanSide == 1){
 				//This should be made the only text that displays on the fragment
-				direction += getResources().getString(R.string.roomDir, "RIGHT");
+				direction += getResources().getString(R.string.roomDir, "RIGHT", myRoomLocation("right"));
 			}
 			else if (scanSide ==0){
-				direction += getResources().getString(R.string.roomDir, "LEFT");
+				direction += getResources().getString(R.string.roomDir, "LEFT", myRoomLocation("right"));
 			}
 		}
-		else if (currentIndex > destinationIndex){
+		else if (scanIndex > getRoomIndex()){
 			if (scanSide == 1){
-				direction += getResources().getString(R.string.roomDir, "LEFT");
+				direction += getResources().getString(R.string.roomDir, "LEFT", myRoomLocation("left"));
 			}
 			else if (scanSide ==0){
-				direction += getResources().getString(R.string.roomDir, "RIGHT");
+				direction += getResources().getString(R.string.roomDir, "RIGHT", myRoomLocation("left"));
 			}
 		}
-		direction += "\n\n"+ getResources().getString(R.string.testDir, scanBuild, String.valueOf(scanFloor), scanRoom, String.valueOf(scanSide), String.valueOf(scanIndex), scanName); 
+//		direction += "\n\n"+ getResources().getString(R.string.testDir, scanBuild, String.valueOf(scanFloor), scanRoom, String.valueOf(scanSide), String.valueOf(scanIndex), scanName); 
 	}
 	
 	// determine split the scan result content

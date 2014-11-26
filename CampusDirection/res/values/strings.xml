@@ -29,7 +29,7 @@
    <string name="invalidBuilding">The building [%1$s] you entered not found.\nPlease verify building and re-enter following format CC1 exmple.</string>
    
    <!-- Direction string format -->
-   <string name="roomDir">Take a %1$s and go forward.</string>
+   <string name="roomDir">Take a %1$s and go forward, the room is locate on your %2$s.</string>
    <string name="floorDir">Go %1$s to %2$s floor.</string>
    <string name="roomLoc">Room is on your %1$s.</string>
    <string name="buildingDir"></string>
@@ -37,6 +37,10 @@
    <string name="cc1FloorDir">Take the main stair from CC1 building to %1$s floor and turn %2$s. The room is locate on your %3$s.</string>
    <string name="cc3FloorDir">Take the main stair to %1$s floor and turn %2$s. The room is locate on your %3$s.</string>
    <string name="yourLocation">Your Location:\nBuilding: %1$s, Floor: %2$s</string>
+   <string name="buildingTobuidling">You\'re in building %1$s and want to go to building %2$s.</string>
+   <string name="exitCC1">Exit building from West entrance on the 1st floor. The building %1$s is locate straight ahead on your %2$s.</string>
+   <string name="exitCC3">Exit building from South entrance on the 1st floor. The building %1$s is locate straight ahead on your %2$s.</string>
+   <string name="destination">Turn around.\nRoom %1$s is locate behind you.</string>
    
     <!-- Testing string section -->
     <string name="testLook">Looking String break down:\nBuilding: %1$s\nFloor: %2$s\nRoom Number: %3$s\nRoom Location: %4$s</string>
