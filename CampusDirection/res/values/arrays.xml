@@ -6,7 +6,8 @@
         <item>CC1</item>
         <item>CC2</item>
         <item>CC3</item>
-    </string-array>
+        <item>LBA</item>
+  	</string-array>
     
     <!-- Room layout on each floor from building, format: Building_Floor -->
     <!-- 
@@ -269,17 +270,64 @@
     <!-- Room floor plan for building CC3 -->
     <string-array name="CC3_0"><!-- There isn't any floor 0/basicment for this building -->        
     </string-array>
-    <string-array name="CC3_1"><!-- There isn't any floor 0/basicment for this building -->        
-    
+    <string-array name="CC3_1"><!-- Room in CC3 floor 1 -->         
     </string-array>
-    <string-array name="CC3_2"><!-- There isn't any floor 0/basicment for this building -->        
-    
+    <string-array name="CC3_1special"><!-- Special room location in floor 1 -->          
     </string-array>
-    <string-array name="CC3_3"><!-- There isn't any floor 0/basicment for this building -->        
-    
+    <string-array name="CC3_2"><!-- Room in CC3 floor 2 -->            
     </string-array>
-        		
-	<!-- 2D array floor plan for each building -->
+    <string-array name="CC3_2special"><!-- Special room location in floor 2 -->            
+    </string-array>
+    <string-array name="CC3_3"><!-- Room in CC3 floor 3 -->            
+    </string-array>
+    <string-array name="CC3_3special"><!-- Special room location in floor 3 -->            
+    </string-array>
+    
+    <!-- LBA: share library floor plan -->
+    <string-array name="LBA_0"><!-- There isn't any floor 0/basicment for this building -->            
+    </string-array>
+    <string-array name="LBA_1"><!-- Floor 1 -->
+        <item>101</item>            
+        <item>102</item>            
+        <item>102A</item>            
+        <item>102B</item>            
+        <item>102C</item>            
+        <item>102D</item>            
+        <item>102E</item>            
+        <item>102F</item>            
+        <item>102G</item>            
+        <item>103</item>            
+        <item>104</item>            
+        <item>105</item>            
+        <item>105A</item>            
+        <item>105B</item>            
+        <item>105C</item>            
+        <item>106</item>            
+        <item>107</item>            
+        <item>108</item>            
+   	</string-array>
+    
+    <!-- Building contain rooms in special location such behide elevator etc... -->    
+    <string-array name="CC1_Special"> <!-- Special in building CC1 -->
+        <item>@array/CC1_0special</item>
+        <item>@array/CC1_1special</item>
+       	<item>@array/CC1_2special</item>
+      	<item>@array/CC1_3special</item>
+  	</string-array>
+    <string-array name="CC2_Special"> <!-- Special in building CC2 -->
+        <item></item> <!-- not special room found on this floor (level 0) -->
+        <item>@array/CC2_1special</item>
+       	<item>@array/CC2_2special</item>
+      	<item>@array/CC2_3special</item>
+  	</string-array>    		
+    <string-array name="CC3_Special"> <!-- Special in building CC3 -->
+        <item></item>
+        <item>@array/CC3_1special</item>
+       	<item>@array/CC3_2special</item>
+      	<item>@array/CC3_3special</item>
+  	</string-array>
+    
+    <!-- 2D array floor plan for each building CC1, CC2 and CC3-->
 	<string-array name="CC1">
 	    <item>@array/CC1_0</item>
 	    <item>@array/CC1_1</item>
@@ -297,6 +345,12 @@
 	    <item>@array/CC3_1</item>
 	   	<item>@array/CC3_2</item>
 	   	<item>@array/CC3_3</item>	
+	</string-array>
+	
+	<!-- LBA, Library Annex, share building -->
+	<string-array name="LBA">
+	    <item></item><!-- Floor 0: none -->
+	   	<item>@array/CC3_0</item> <!-- Floor 1 -->	    	    
 	</string-array>
 	
 </resources>

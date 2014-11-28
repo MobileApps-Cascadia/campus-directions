@@ -73,6 +73,8 @@ public class SearchFragment extends Fragment
 			@Override
 			public void onClick(View v) {
 				MainActivity.direction = "";	//reset direction string
+				MainActivity.specialDirection = ""; //reset special room location
+				MainActivity.searchClick = false;	//reset
 
 				/* when searchButton click,
 				 * do all the validation to make sure room number user enter is valid.
@@ -125,6 +127,11 @@ public class SearchFragment extends Fragment
 	   				tempBld = res.obtainTypedArray(R.array.CC3);
 	   				return verifyRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));
 	   			}else return false;
+		   	case "LBA": //Share building: Library Annex
+		   		if(MainActivity.inputFloor == 1){
+		   			tempBld = res.obtainTypedArray(R.array.LBA);
+		   			return verifyRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));		   			
+		   		}else return false;		   		
 	   		default:
 	   			return false; //building is invalid
 	   }

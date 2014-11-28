@@ -20,10 +20,11 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 
 	SearchFragment searchFragment;
 	public static String lookFor = "Kodiac Corner";
-	public static String direction = "";
+	public static String direction = "", specialDirection = "";
 	// Determine QR Code string
 	public static String scanBuild, scanRoom, scanName, scanExit, inputBuild, inputRoom;
-	public static int scanFloor, scanSide, scanIndex, inputFloor, inputLocation;
+	public static int scanFloor, scanSide, scanIndex, inputFloor, inputLocation, scanLocation;
+	public static boolean searchClick = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +50,12 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 		IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
 		// handle scan result
 		if (scanResult != null) {
-
-//			Fragment newFrame = MainFragment.newInstance(scanResult.toString());
+			//result string return from scanner
 			String result = intent.getStringExtra("SCAN_RESULT");
 			
 			splitScanResult(result); //split scan result
 			
-			direction = "Here is your scan result ["+result+"]";
-//			compileDirection();	//compile direction
+			//begin compile direction from result
 			compileDirection();
 
 			//send result to new fragment.
@@ -66,41 +65,43 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 		}
 	}
 	
+	// compile direction output text string display to user
 	public void compileDirection()
 	{
-		direction = "Test Result:\n\n";
+		direction = "---> Direction <---\n";
 		// is building input/scan the same
 		if(scanBuild.equals(inputBuild)){
 			// is the input/scan floor the same
 			if(inputFloor == scanFloor){
 				//determine room direction
 				RoomDir();
-				//also determine is looking for room locate special location
-				compileSpecialDir();
 			}else{
 				//determine Floor to Floor direction
 				floorDirection();
-
 				//also brief determine room direction as well
 				basicRoomDirection();
 			}			
+			//also determine is looking for room locate special location
+			if(isSpecialRoom()) compileSpecialDir();
 		}else{
 			//determine Building to Building direction
 			if((scanBuild.equals("CC1") && inputBuild.equals("CC2")) || (scanBuild.equals("CC2") && inputBuild.equals("CC1")))
 			{
 				//determine Floor to Floor direction
 				floorDirection();
-
 				//user inside building CC1 and looking for room in building CC2 and by versa
 				switch(scanBuild){
 					case "CC1":	// user location in CC1 building and want to go to CC2 building
 						if(scanSide == 1)
-							direction += getResources().getString(R.string.roomDir, "RIGHT", myRoomLocation("right"));
+							direction += getResources().getString(R.string.roomDirBuilding, "RIGHT", inputBuild, myRoomLocation("right"));
 						else if(scanSide == 0)
-							direction += getResources().getString(R.string.roomDir, "LEFT", myRoomLocation("right"));
+							direction += getResources().getString(R.string.roomDirBuilding, "LEFT", inputBuild,  myRoomLocation("right"));
 						break;
 					case "CC2": // user location in CC2 building and want to go to CC1 building
-						direction += "\nGo forward down the hall, the room is locate on your " + myRoomLocation("left") + ".";
+						if(scanSide == 1)
+							direction += getResources().getString(R.string.roomDirBuilding, "LEFT", inputBuild, myRoomLocation("left"));
+						else if(scanSide == 0)
+							direction += getResources().getString(R.string.roomDirBuilding, "RIGHT", inputBuild,  myRoomLocation("left"));
 						break;
 					default:
 						direction += "Building is unkown. Please rescan bar code again.";
@@ -227,37 +228,39 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 	// compile direction if the room is locate in hiding location.
 	public void compileSpecialDir()
 	{
-		
+		specialDirection = "[SPECIAL DIRECTION HERE]";
 	}
 	
 	// determine room direction on the same floor.
 	public void RoomDir()
 	{
-		int current = Integer.parseInt(scanRoom.replaceAll("[\\D]", ""));      //here we are making our strings for rooms into integers
-		int destination = Integer.parseInt(inputRoom.replaceAll("[\\D]", ""));
+		int currentRm = Integer.parseInt(scanRoom.replaceAll("[\\D]", ""));      //here we are making our strings for rooms into integers
+		int destinationRm = Integer.parseInt(inputRoom.replaceAll("[\\D]", ""));
 		
-		if (current == destination+1 || current == destination-1 ){             //if the destination is only +-1 from your location it is behind you.
-//			direction += "Turn around to find your destination";
+		//quick check to see if user already at destination
+		if(currentRm == destinationRm){
+			direction += getResources().getString(R.string.roomFound, inputRoom);
+			return;
+		}
+		
+		if (currentRm == destinationRm+1 || currentRm == destinationRm-1 ){             //if the destination is only +-1 from your location it is behind you.
 			direction += getResources().getString(R.string.destination, inputRoom);
-		}
-		else if (scanIndex < getRoomIndex()){
-			if (scanSide == 1){
+		}else if (scanIndex < getRoomIndex()){
+			if (scanSide == 1){	// user facing odd side room number
 				//This should be made the only text that displays on the fragment
-				direction += getResources().getString(R.string.roomDir, "RIGHT", myRoomLocation("right"));
+				direction += getResources().getString(R.string.roomDir, "RIGHT", lookFor, myRoomLocation("right"));
 			}
-			else if (scanSide ==0){
-				direction += getResources().getString(R.string.roomDir, "LEFT", myRoomLocation("right"));
+			else if (scanSide == 0){ // user facing even side room number
+				direction += getResources().getString(R.string.roomDir, "LEFT", lookFor, myRoomLocation("right"));
+			}
+		}else if (scanIndex > getRoomIndex()){
+			if (scanSide == 1){ // user facing odd side room number
+				direction += getResources().getString(R.string.roomDir, "LEFT", lookFor, myRoomLocation("left"));
+			}
+			else if (scanSide == 0){ // user facing even side room number
+				direction += getResources().getString(R.string.roomDir, "RIGHT", lookFor, myRoomLocation("left"));
 			}
 		}
-		else if (scanIndex > getRoomIndex()){
-			if (scanSide == 1){
-				direction += getResources().getString(R.string.roomDir, "LEFT", myRoomLocation("left"));
-			}
-			else if (scanSide ==0){
-				direction += getResources().getString(R.string.roomDir, "RIGHT", myRoomLocation("left"));
-			}
-		}
-//		direction += "\n\n"+ getResources().getString(R.string.testDir, scanBuild, String.valueOf(scanFloor), scanRoom, String.valueOf(scanSide), String.valueOf(scanIndex), scanName); 
 	}
 	
 	// determine split the scan result content
@@ -274,6 +277,9 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 			scanName = tempStr[5].trim();
 		else
 			scanName = "";
+		
+		//determine scan location of room number by second digit.
+		scanLocation = Integer.parseInt((scanRoom.replaceAll("[\\D]", "")).substring(1, 2));
 	}
 	
 	// determine user input
@@ -285,7 +291,8 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 		inputLocation = loc;
 	}
 	
-	public void resetResult()
+	// reset all static variable
+	public static void resetResult()
 	{
 		scanBuild = null;
 		scanFloor = -1;
@@ -294,5 +301,90 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 		scanRoom = null;
 		scanName = null;
 		scanExit = null;
+		searchClick = false;
 	}
+	
+	// determine where user inside building approximate location
+	public static String scanLocation()
+	{
+		String loc = "";
+		switch(scanLocation){
+			case 0:
+				if(scanBuild.equals("CC1") || scanBuild.equals("CC2"))
+					loc = "Center of Building";
+				else if(scanBuild.equals("CC3"))
+					loc = "North End Building";
+				break;
+			case 1:
+				if(scanBuild.equals("CC1") || scanBuild.equals("CC2"))
+					loc = "Center of Building";				
+				else if(scanBuild.equals("CC3"))
+					loc = "North End Building";
+				break;
+			case 2:
+				if(scanBuild.equals("CC1") || scanBuild.equals("CC2"))
+					loc = "South End Building";				
+				else if(scanBuild.equals("CC3"))
+					loc = "Center of Building";				
+				break;				
+			case 3:
+				loc = "South End Building";				
+				break;
+			case 4:
+				loc = "North End Building";				
+				break;
+			case 5:
+				loc = "North End Building";								
+				break;
+			case 6:
+				loc = "South End Building";				
+				break;
+			case 7:
+				loc = "Center of Building";								
+				break;
+			case 8:
+				loc = "North End Building";								
+				break;
+			default:
+				break;
+		}
+		return loc;
+	}
+	
+	//check to see if the room user enter existed in that building/floor Special location
+	public boolean isSpecialRoom()
+	{
+		Resources res = getResources();
+		TypedArray tempBld;
+		switch(MainActivity.inputBuild){
+		  	case "CC1":
+		  		if(MainActivity.inputFloor >= 0 && MainActivity.inputFloor < 4){
+		  			tempBld = res.obtainTypedArray(R.array.CC1_Special);
+		   			return verifySpecRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));
+		   		}else return false;
+		   	case "CC2":
+		   		if(MainActivity.inputFloor >= 0 && MainActivity.inputFloor < 4){
+		   			tempBld = res.obtainTypedArray(R.array.CC2_Special);
+		   			return verifySpecRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));
+		   		}else return false;
+		   	case "CC3":
+		   		if(MainActivity.inputFloor > 0 && MainActivity.inputFloor < 3){
+		   			tempBld = res.obtainTypedArray(R.array.CC3_Special);
+		   			return verifySpecRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));
+		   		}else return false;
+		   	case "LBA": //Share building: Library Annex
+		   		if(MainActivity.inputFloor == 1){
+		   			tempBld = res.obtainTypedArray(R.array.LBA);
+		   			return verifySpecRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));		   			
+		   		}else return false;		   		
+		   	default:
+		   		return false; //building is invalid
+		}
+	}
+
+	// check existing room per floor plan
+	public boolean verifySpecRoom(String[] arr)
+	{
+		return Arrays.asList(arr).contains(MainActivity.inputRoom);
+	}	
 }
