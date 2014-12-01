@@ -30,6 +30,7 @@
    
    <!-- Direction string format -->
    <string name="roomDir">Take a %1$s and go forward down the hall. The room %2$s is locate on your %3$s.</string>
+   <string name="roomLBA">Rooms 101 thru 104 A-G go straight ahead. Rooms 105 thru 108 A-C, take a RIGHT follow the hall way.</string>
    <string name="floorDir">Go %1$s to %2$s floor.</string>
    <string name="roomLoc">Room is on your %1$s.</string>
    <string name="buildingDir"></string>
@@ -40,6 +41,7 @@
    <string name="buildingTobuidling">You\'re in building %1$s and want to go to building %2$s.</string>
    <string name="exitCC1">Exit building from West entrance on the 1st floor. The building %1$s is locate straight ahead on your %2$s.</string>
    <string name="exitCC3">Exit building from South entrance on the 1st floor. The building %1$s is locate straight ahead on your %2$s.</string>
+   <string name="exitLBA">Exit building from West entrance on the 1st floor. Take a RIGHT, The building %1$s is locate on your %2$s straight ahead.</string>
    <string name="destination">Turn around.\nRoom %1$s is locate behind you.</string>
    <string name="roomDirBuilding">Take a %1$s and go forward become building %2$s. The room is locate on your %3$s.</string>
    <string name="roomFound">You\'re arrived at your destination, look Left or Right to find your room %1$s.</string>

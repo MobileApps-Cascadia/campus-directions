@@ -185,7 +185,9 @@
         <item>995</item> <!-- Math and Writing center EVEN -->
         <item>663</item> <!-- stairs on far right of map ODD -->
     </string-array>
-    
+   	<string-array name="CC2_0special">
+   	</string-array>
+   	
     <string-array name="CC2_1">
         <item>160</item>
         <item>161</item>
@@ -306,7 +308,18 @@
         <item>107</item>            
         <item>108</item>            
    	</string-array>
-    
+    <string-array name="LBA_2"><!-- Floor 2 -->
+    </string-array>
+    <string-array name="LBA_3"><!-- Floor 3 -->
+    </string-array>
+    <string-array name="LBA_0special"><!-- Floor 0 special room -->
+    </string-array>
+    <string-array name="LBA_1special"><!-- Floor 1 special room -->
+    </string-array>
+    <string-array name="LBA_2special"><!-- Floor 2 special room -->
+    </string-array>
+    <string-array name="LBA_3special"><!-- Floor 3 special room -->
+    </string-array>
     <!-- Building contain rooms in special location such behide elevator etc... -->    
     <string-array name="CC1_Special"> <!-- Special in building CC1 -->
         <item>@array/CC1_0special</item>
@@ -315,7 +328,7 @@
       	<item>@array/CC1_3special</item>
   	</string-array>
     <string-array name="CC2_Special"> <!-- Special in building CC2 -->
-        <item></item> <!-- not special room found on this floor (level 0) -->
+        <item>@array/CC2_0special</item> <!-- not special room found on this floor (level 0) -->
         <item>@array/CC2_1special</item>
        	<item>@array/CC2_2special</item>
       	<item>@array/CC2_3special</item>
@@ -349,8 +362,16 @@
 	
 	<!-- LBA, Library Annex, share building -->
 	<string-array name="LBA">
-	    <item></item><!-- Floor 0: none -->
-	   	<item>@array/CC3_0</item> <!-- Floor 1 -->	    	    
+	    <item>@array/LBA_0</item><!-- Floor 0: none -->
+	   	<item>@array/LBA_1</item> <!-- Floor 1 -->	    	    
+	   	<item>@array/LBA_2</item> <!-- Floor 2 -->	    	    
+	   	<item>@array/LBA_3</item> <!-- Floor 3 -->	    	    
 	</string-array>
-	
+	<string-array name="LBA_Special">
+	    <item>@array/LBA_0special</item>
+	    <item>@array/LBA_1special</item>
+	    <item>@array/LBA_2special</item>
+	   	<item>@array/LBA_3special</item>
+	</string-array>
+		
 </resources>

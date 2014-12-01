@@ -53,7 +53,7 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 			//result string return from scanner
 			String result = intent.getStringExtra("SCAN_RESULT");
 			
-			splitScanResult(result); //split scan result
+			splitScanResult(result); //split string value from qr code scan result
 			
 			//begin compile direction from result
 			compileDirection();
@@ -71,6 +71,14 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 		direction = "---> Direction <---\n";
 		// is building input/scan the same
 		if(scanBuild.equals(inputBuild)){
+			//only if user inside LBA building and look for room in there
+			if(inputBuild.equals("LBA") && scanBuild.equals("LBA")){
+				direction += getResources().getString(R.string.roomLBA);
+				//also determine is looking for room locate special location
+				if(isSpecialRoom()) compileSpecialDir();
+				return;
+			}//end brief room direction inside LBA building				
+				
 			// is the input/scan floor the same
 			if(inputFloor == scanFloor){
 				//determine room direction
@@ -104,32 +112,41 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 							direction += getResources().getString(R.string.roomDirBuilding, "RIGHT", inputBuild,  myRoomLocation("left"));
 						break;
 					default:
-						direction += "Building is unkown. Please rescan bar code again.";
+						direction += "Building unkown. Please rescan QR code again.";
 						break;
 				}				
 			}else{
-				if(inputBuild.equals("CC3")){
-					if(scanBuild.equals("CC1") || scanBuild.equals("CC2")){
-						//user from CC3 and want to go to CC1 or CC2
-						if(scanFloor != 1){
-							floorDirection();
-						}
+				if(inputBuild.equals("CC3")){ //user want to go to building CC3
+					if(scanBuild.equals("CC1") || scanBuild.equals("CC2")){ //start from CC1 or CC2 building
+						//user from CC1 or CC2 and want to go to CC3
+						if(scanFloor != 1) floorDirection();
 						direction += getResources().getString(R.string.exitCC1, inputBuild, "RIGHT");
-
-					}else if(scanBuild.equals("some other building here")){
-						//user from CC3 and want to go to other building
+					}else if(scanBuild.equals("LBA")){ //start from LBA share library
+						//user from LBA and want to go to CC3 building
+						if(scanFloor != 1) floorDirection();
+						direction += getResources().getString(R.string.exitLBA, inputBuild, "LEFT pass CC1 building");
 					}
-				}else if(inputBuild.equals("CC1") || inputBuild.equals("CC2")){
-					if(scanBuild.equals("CC3")){
-						//user from building CC1 or CC2 want to go to CC3 building
-						if(scanFloor != 1){
-							floorDirection();
-						}
+				}else if(inputBuild.equals("CC1") || inputBuild.equals("CC2")){ //user want to go to building CC1 or CC2
+					if(scanBuild.equals("CC3")){ //start from CC3 building
+						//user from building CC3 want to go to CC1 or CC2 building
+						if(scanFloor != 1) floorDirection();
 						direction += getResources().getString(R.string.exitCC3, inputBuild, "LEFT");
-					}else if(scanBuild.equals("some other building here such library or bookstore")){
-						//user from CC1 or CC2 and want to go to other building
+					}else if(scanBuild.equals("LBA")){ //start from LBA share library building
+						//user from LBA and want to go to CC1 or CC2 building
+						if(scanFloor != 1) floorDirection();
+						direction += getResources().getString(R.string.exitLBA, inputBuild, "RIGHT");
 					}
-				}				
+				}else if(inputBuild.equals("LBA")){ //user want to go to LBA share library building
+					if(scanBuild.equals("CC3")){ //start from CC3 building
+						//user from building CC3 want to go to LBA building
+						if(scanFloor != 1) floorDirection(); 
+						direction += getResources().getString(R.string.exitCC3, inputBuild, "LEFT pass CC1 building");
+					}else if(scanBuild.equals("CC1") || scanBuild.equals("CC2")){ //start from CC1 or CC2 building
+						//user from CC1 or CC2 building and want to go to LBA building
+						if(scanFloor != 1) floorDirection(); 
+						direction += getResources().getString(R.string.exitCC1, inputBuild, "LEFT pass the Bookstore");
+					}					
+				}//add another else if here if user want to go to other different building
 			}
 		}
 	}
@@ -356,26 +373,26 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 	{
 		Resources res = getResources();
 		TypedArray tempBld;
-		switch(MainActivity.inputBuild){
+		switch(inputBuild){
 		  	case "CC1":
-		  		if(MainActivity.inputFloor >= 0 && MainActivity.inputFloor < 4){
+		  		if(inputFloor >= 0 && inputFloor < 4){
 		  			tempBld = res.obtainTypedArray(R.array.CC1_Special);
-		   			return verifySpecRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));
+		   			return verifySpecRoom(res.getStringArray(tempBld.getResourceId(inputFloor, 0)));
 		   		}else return false;
 		   	case "CC2":
-		   		if(MainActivity.inputFloor >= 0 && MainActivity.inputFloor < 4){
+		   		if(inputFloor >= 0 && inputFloor < 4){
 		   			tempBld = res.obtainTypedArray(R.array.CC2_Special);
-		   			return verifySpecRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));
+		   			return verifySpecRoom(res.getStringArray(tempBld.getResourceId(inputFloor, 0)));
 		   		}else return false;
 		   	case "CC3":
-		   		if(MainActivity.inputFloor > 0 && MainActivity.inputFloor < 3){
+		   		if(inputFloor > 0 && inputFloor < 3){
 		   			tempBld = res.obtainTypedArray(R.array.CC3_Special);
-		   			return verifySpecRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));
+		   			return verifySpecRoom(res.getStringArray(tempBld.getResourceId(inputFloor, 0)));
 		   		}else return false;
 		   	case "LBA": //Share building: Library Annex
-		   		if(MainActivity.inputFloor == 1){
-		   			tempBld = res.obtainTypedArray(R.array.LBA);
-		   			return verifySpecRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));		   			
+		   		if(inputFloor == 1){
+		   			tempBld = res.obtainTypedArray(R.array.LBA_Special);
+		   			return verifySpecRoom(res.getStringArray(tempBld.getResourceId(inputFloor, 0)));		   			
 		   		}else return false;		   		
 		   	default:
 		   		return false; //building is invalid
@@ -385,6 +402,6 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 	// check existing room per floor plan
 	public boolean verifySpecRoom(String[] arr)
 	{
-		return Arrays.asList(arr).contains(MainActivity.inputRoom);
+		return Arrays.asList(arr).contains(inputRoom);
 	}	
 }
