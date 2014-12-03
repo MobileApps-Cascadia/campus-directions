@@ -1,5 +1,5 @@
 // Campus Direction quick splash screen
-package com.campusdirection;
+package edu.cascadia.campusdirections;
 
 import android.app.Activity;
 import android.content.Intent;

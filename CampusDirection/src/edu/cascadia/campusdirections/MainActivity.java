@@ -1,11 +1,8 @@
 //MainActivity Campus Direction
 
-package com.campusdirection;
+package edu.cascadia.campusdirections;
 
 import java.util.Arrays;
-
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -14,7 +11,9 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.widget.Toast;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 public class MainActivity extends Activity implements SearchFragment.SearchFragmentListener{
 

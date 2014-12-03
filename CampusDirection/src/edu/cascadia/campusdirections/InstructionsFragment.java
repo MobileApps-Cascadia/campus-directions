@@ -1,7 +1,9 @@
-package com.campusdirection;
+package edu.cascadia.campusdirections;
+
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
 
 
 import android.app.Activity;
