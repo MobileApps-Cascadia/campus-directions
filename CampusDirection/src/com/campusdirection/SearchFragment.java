@@ -1,6 +1,7 @@
 package com.campusdirection;
 
 import java.util.Arrays;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -21,6 +22,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -38,6 +42,7 @@ public class SearchFragment extends Fragment
    InstructionsFragment instructionsFragment;
    private EditText textRoom;
    private Spinner arrayBuilding;
+   private RadioGroup directLocations;   ///for the radio buttons that are exact locations user is looking for   
    
    // set AddEditFragmentListener when Fragment attached   
    @Override
@@ -60,13 +65,53 @@ public class SearchFragment extends Fragment
    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
    {
 	   super.onCreateView(inflater, container, savedInstanceState);    
-	   View view = inflater.inflate(R.layout.activity_search_screen, container, false);
+	   final View view = inflater.inflate(R.layout.activity_search_screen, container, false);
 	   
 	   //get user input building/room number
 	   textRoom = (EditText) view.findViewById(R.id.textRoom);
 //	   textRoom.setRawInputType(InputType.TYPE_CLASS_NUMBER);
 	   arrayBuilding = (Spinner) view.findViewById(R.id.arrayBuilding);	      
 	   searchButton = (Button) view.findViewById(R.id.searchButton);
+	   
+	   
+	   ////////////////////////////////////////////////////////////////+++++++++++++
+	   //adding section for Radio Buttons//////////////////////////////+++++++++++++
+	    
+//	   directLocations = (RadioGroup) view.findViewById(R.id.radiogroup);
+//	   directLocations.setOnCheckedChangeListener(new OnCheckedChangeListener(){
+//		   
+//		   @Override		 
+//			public void onCheckedChanged(RadioGroup group, int checkedId) {
+//				// TODO Auto-generated method stub
+//			   RadioButton KodiacCorner = (RadioButton) view.findViewById(R.id.kodiacCornerButton);
+//			   RadioButton Library = (RadioButton) view.findViewById(R.id.LibraryButton);
+//			   RadioButton BookStore = (RadioButton) view.findViewById(R.id.bookstoreButton);
+//			   RadioButton Mobius = (RadioButton) view.findViewById(R.id.bookstoreButton);
+//			   
+//			   if (KodiacCorner.isChecked()){
+//				   arrayBuilding = "CC1";
+//				   textRoom="121";
+//			   }
+//			   if (Library.isChecked()){
+//				   arrayBuilding = "CC1";
+//				   textRoom="121";
+//			   }
+//			   if (BookStore.isChecked()){
+//				   arrayBuilding = "CC1";
+//				   textRoom="121";
+//			   }
+//			   if (Mobius.isChecked()){
+//				   arrayBuilding = "CC1";
+//				   textRoom="121";
+//			   }
+//		   }
+//
+//	   });
+//		
+	   
+	   
+	   
+	   
 		
 	   searchButton.setOnClickListener(new View.OnClickListener() {           ////////////////////////////////+++++
 	
