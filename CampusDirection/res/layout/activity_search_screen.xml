@@ -16,6 +16,12 @@
         android:textColor="#454545"
         android:textSize="50sp" />
 
+    <TextView
+        android:id="@+id/roomNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/roomNum" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,11 +51,11 @@
         </EditText>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/searchButton"
-        android:layout_width="fill_parent"
+    <TextView
+        android:id="@+id/clickDestination"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/search" />
+        android:text="@string/clickDestination" />
 
     <RadioGroup 
 		android:id="@+id/radiogroup"
@@ -57,31 +63,38 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
     <RadioButton
-        android:id="@+id/radioButton1"
+        android:id="@+id/kodiacCornerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/kodiacCorner" />
 
     <RadioButton
-        android:id="@+id/radioButton2"
+        android:id="@+id/LibraryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/library" />
 
     <RadioButton
-        android:id="@+id/radioButton3"
+        android:id="@+id/bookstoreButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/bookstore" />
 
     <RadioButton
-        android:id="@+id/radioButton4"
+        android:id="@+id/mobiusHallButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/mobiusHall" />
    </RadioGroup>
+
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/search" />
+
 </LinearLayout>

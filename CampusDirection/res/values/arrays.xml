@@ -11,28 +11,27 @@
     
     <!-- Room layout on each floor from building, format: Building_Floor -->
     <!-- 
-    	661,662,663 are stairs
-    	777,774 are restrooms
-    	981 are elevators
-    	CC1_1 array does not include 661 stairs since they are not accessible on that floor
+    	rooms that end in xyz are set up to not be recognized as valid room numbers.
+    	CC1_1 array does not include stairs since they are not accessible on that floor
     	
     	-->
     <!-- Room floor plan for building CC1 -->
     <string-array name="CC1_0">
-        <item>661</item> <!-- stairs on far left of map ODD-->
+        <item>033xyz</item>
+        <!-- stairs on far left of map ODD-->
         <item>030</item>
         <item>031</item>
         <item>020</item>
         <item>021</item>
-        <item>010</item>  
+        <item>010</item>
         <item>011</item>
-        <item>777</item> <!-- ladies restroom ODD-->
+        <item>003xyz</item><!-- ladies restroom ODD-->
         <item>004</item>
         <item>002</item>
-        <item>981</item> <!-- elevator ODD-->
-        <item>662</item> <!-- center stairs EVEN-->
-        <item>998</item> <!-- student breakout area EVEN-->
-        <item>774</item> <!-- men's restroom ODD-->
+        <item>001xyz</item><!-- elevator ODD-->
+        <item>000xyz</item><!-- center stairs EVEN-->
+        <item>040xyz</item><!-- student breakout area EVEN-->
+        <item>043xyz</item><!-- men's restroom ODD-->
         <item>042</item>
         <item>044</item>
         <item>046</item>
@@ -40,7 +39,8 @@
         <item>050</item>
         <item>052</item>
         <item>041</item>
-    </string-array>
+        
+        </string-array>
     
     <string-array name="CC1_0special">
         <item>042</item>
@@ -53,15 +53,15 @@
     
     
     <string-array name="CC1_1">
-        <item>997</item>  <!-- kodiac corner!!! ODD-->
+        <item>121xyz</item><!-- kodiac corner!!! ODD-->
         <item>110</item>
-        <item>777</item> <!-- ladies restroom ODD-->
+        <item>103xyz</item><!-- ladies restroom ODD-->
         <item>102</item>
-        <item>981</item> <!-- elevator ODD-->
-        <item>996</item> <!-- student welcome center ODD-->
-        <item>662</item> <!-- center stairs EVEN-->
-        <item>774</item> <!-- men's restroom ODD -->
-        <item>999</item> <!-- student breakout area ODD -->
+        <item>101xyz</item><!-- elevator ODD-->
+        <item>105xyz</item><!-- student welcome center ODD-->
+        <item>000xyz</item><!-- center stairs EVEN-->
+        <item>141xyz</item><!-- men's restroom ODD -->
+        <item>155xyz</item><!-- student breakout area ODD -->
         <item>140</item>
         <item>142</item>
         <item>143</item>
@@ -95,22 +95,25 @@
     </string-array>
     
     <string-array name="CC1_2">
-        <item>661</item> <!-- stairs on far left of map ODD-->
+        <item>233xyz</item><!-- stairs on far left of map ODD-->
         <item>230</item>
         <item>231</item>
         <item>220</item>
         <item>221</item>
         <item>210</item>
         <item>211</item>
-        <item>777</item> <!-- ladies restroom ODD-->
-        <item>202</item> <!--  this has a group of rooms EVEN -->
-        <item>981</item> <!-- elevator ODD -->
+        <item>207xyz</item><!-- ladies restroom ODD-->
+        <item>202</item><!--  this has a group of rooms EVEN -->
+        <item>202A</item>
+        <item>202B</item>
+        <item>202C</item>
+        <item>201xyz</item><!-- elevator ODD -->
         <item>205</item>
         <item>203</item>
-        <item>662</item> <!-- center stairs EVEN -->
-        <item>774</item> <!-- men's restroom ODD -->
+        <item>000xyz</item><!-- center stairs EVEN -->
+        <item>241xyz</item><!-- men's restroom ODD -->
         <item>240</item>
-        <item>999</item> <!-- student breakout area ODD -->
+        <item>255xyz</item><!-- student breakout area ODD -->
         <item>243</item>
         <item>245</item>
         <item>247</item>
@@ -133,27 +136,27 @@
     </string-array>
     
    	<string-array name="CC1_3">
-   	    <item>661</item> <!-- stairs on far left of map ODD-->
-        <item>330</item>
-        <item>331</item>
-        <item>320</item>
-        <item>999</item> <!-- student breakout area ODD -->
-        <item>310</item>
-        <item>311</item>
-        <item>313</item>
-        <item>315</item>
-        <item>317</item>
-        <item>319</item>
-        <item>321</item>
-        <item>323</item>
-        <item>325</item>
-        <item>327</item>
-        <item>329</item>
-        <item>777</item> <!-- ladies room ODD-->
-        <item>302</item>
-        <item>981</item> <!-- elevator ODD -->
-        <item>662</item> <!-- center stairs EVEN -->
-        <item>774</item> <!-- men's room ODD -->
+   	    <item>333xyz</item><!-- stairs on far left of map ODD-->
+   	    <item>330</item>
+   	    <item>331</item>
+   	    <item>320</item>
+   	    <item>321xyz</item><!-- student breakout area ODD -->
+   	    <item>310</item>
+   	    <item>311</item>
+   	    <item>313</item>
+   	    <item>315</item>
+   	    <item>317</item>
+   	    <item>319</item>
+   	    <item>321</item>
+   	    <item>323</item>
+   	    <item>325</item>
+   	    <item>327</item>
+   	    <item>329</item>
+   	    <item>303xyz</item><!-- ladies room ODD-->
+   	    <item>302</item>
+   	    <item>301xyz</item><!-- elevator ODD -->
+   	    <item>000xyz</item><!-- center stairs EVEN -->
+   	    <item>343xyz</item><!-- men's room ODD -->
         <item>340</item>
         <item>341</item>
         <item>351</item>
@@ -177,23 +180,23 @@
    	
     <!-- Room floor plan for building CC2 -->
    	<string-array name="CC2_0">
-   	    <item>980</item> <!-- Espresso stand ODD-->
-        <item>992</item> <!-- open learning center EVEN -->
-   	    <item>777</item> <!-- Ladies' restroom ODD-->
-   	    <item>774</item> <!-- Men's restroom ODD-->
-        <item>081</item>
-        <item>995</item> <!-- Math and Writing center EVEN -->
-        <item>663</item> <!-- stairs on far right of map ODD -->
-    </string-array>
+   	    <item>061xyz</item><!-- Espresso stand ODD-->
+   	    <item>070xyz</item><!-- open learning center EVEN -->
+   	    <item>071xyz</item><!-- Ladies' restroom ODD-->
+   	    <item>073xyz</item><!-- Men's restroom ODD-->
+   	    <item>081</item>
+   	    <item>080xyz</item><!-- Math and Writing center EVEN -->
+   	    <item>093xyz</item><!-- stairs on far right of map ODD -->
+   	    </string-array>
    	<string-array name="CC2_0special">
    	</string-array>
    	
     <string-array name="CC2_1">
         <item>160</item>
         <item>161</item>
-        <item>777</item> <!-- ladies restroom ODD -->
+        <item>171xyz</item><!-- ladies restroom ODD -->
         <item>170</item>
-        <item>999</item> <!-- student breakout area ODD -->
+        <item>189xyz</item><!-- student breakout area ODD -->
         <item>173</item>
         <item>175</item>
         <item>177</item>
@@ -203,7 +206,7 @@
         <item>185</item>
         <item>187</item>
         <item>180</item>   
-        <item>663</item> <!-- stairs on far right of map ODD-->    
+        <item>191xyz</item> <!-- stairs on far right of map ODD-->    
     </string-array>
     
     <string-array name="CC2_1special">
@@ -218,13 +221,27 @@
     </string-array>
     
    	<string-array name="CC2_2">
-        <item>260</item>
-        <item>261</item>
-        <item>777</item> <!-- ladies restroom ODD -->
-        <item>280</item> <!-- contains a group of rooms -->
-        <item>281</item> <!-- contains a group of rooms -->
-        <item>663</item> <!-- stairs on far right of map ODD-->
-    </string-array>
+   	    <item>260</item>
+   	    <item>261</item>
+   	    <item>271xyz</item><!-- ladies restroom ODD -->
+   	    <item>280A</item><!-- contains a group of rooms -->
+   	    <item>280B</item>
+   	    <item>280C</item>
+   	    <item>280D</item>
+   	    <item>280E</item>
+   	    <item>280F</item>
+   	    <item>280G</item>
+   	    <item>280H</item>
+   	    <item>281A</item><!-- contains a group of rooms -->
+   	    <item>281B</item>
+   	    <item>281C</item>
+   	    <item>281D</item>
+   	    <item>281E</item>
+   	    <item>281F</item>
+   	    <item>281G</item>
+   	    <item>281H</item>
+   	    <item>291xyz</item><!-- stairs on far right of map ODD-->
+   	    </string-array>
     
    	<string-array name="CC2_2special">
         <item>280</item>
@@ -234,9 +251,9 @@
     <string-array name="CC2_3">
         <item>358</item>
         <item>361</item>
-        <item>777</item> <!-- ladies restroom ODD -->
+        <item>363xyz</item> <!-- ladies restroom ODD -->
         <item>360</item>
-        <item>999</item> <!-- student breakout area ODD -->
+        <item>371xyz</item> <!-- student breakout area ODD -->
         <item>373</item> 
         <item>375</item>
         <item>377</item> 
@@ -247,7 +264,7 @@
         <item>387</item> 
         <item>389</item>
         <item>380</item> 
-        <item>663</item> <!-- stairs at far right of map -->      
+        <item>391xyz</item> <!-- stairs at far right of map -->      
     </string-array>
     
     <string-array name="CC2_3special">

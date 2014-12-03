@@ -9,6 +9,9 @@
     <string name="QRCodeLabel">Scan New QR Code Again Anytime</string>
     <string name="directionStr">Please find QR Code near by then click on Scan QR Code button below.</string>
     
+    <string name="roomNum">Enter your destination room number</string>
+    <string name="clickDestination">Or click on your destination</string>
+    
    <string name="bookstore">Book Store</string>
    <string name="mobiusHall">Mobius Hall</string>
    <string name="library">Library</string>

@@ -9,40 +9,105 @@ package com.campusdirection;
 
 public final class R {
     public static final class array {
-        /**  2D array floor plan for each building 
+        /**  2D array floor plan for each building CC1, CC2 and CC3
          */
-        public static final int CC1=0x7f060010;
+        public static final int CC1=0x7f060027;
         /**  Room layout on each floor from building, format: Building_Floor 
+ 
+    	661,662,663 are stairs
+    	777,774 are restrooms
+    	981 are elevators
+    	CC1_1 array does not include 661 stairs since they are not accessible on that floor
+    	
+    	
  Room floor plan for building CC1 
          */
         public static final int CC1_0=0x7f060004;
-        public static final int CC1_1=0x7f060005;
-        public static final int CC1_2=0x7f060006;
-        public static final int CC1_3=0x7f060007;
-        public static final int CC2=0x7f060011;
-        /**  Room floor plan for building CC2 
+        public static final int CC1_0special=0x7f060005;
+        public static final int CC1_1=0x7f060006;
+        public static final int CC1_1special=0x7f060007;
+        public static final int CC1_2=0x7f060008;
+        public static final int CC1_2special=0x7f060009;
+        public static final int CC1_3=0x7f06000a;
+        public static final int CC1_3special=0x7f06000b;
+        /**  Building contain rooms in special location such behide elevator etc... 
          */
-        public static final int CC2_0=0x7f060008;
-        public static final int CC2_1=0x7f060009;
-        public static final int CC2_2=0x7f06000a;
-        public static final int CC2_3=0x7f06000b;
-        public static final int CC3=0x7f060012;
+        public static final int CC1_Special=0x7f060024;
+        public static final int CC2=0x7f060028;
+        /**  Room floor plan for building CC2 
+ stairs on far right of map ODD 
+         */
+        public static final int CC2_0=0x7f06000c;
+        public static final int CC2_0special=0x7f06000d;
+        /**  stairs on far right of map ODD
+         */
+        public static final int CC2_1=0x7f06000e;
+        public static final int CC2_1special=0x7f06000f;
+        /**  stairs on far right of map ODD
+         */
+        public static final int CC2_2=0x7f060010;
+        public static final int CC2_2special=0x7f060011;
+        /**  stairs at far right of map 
+         */
+        public static final int CC2_3=0x7f060012;
+        public static final int CC2_3special=0x7f060013;
+        public static final int CC2_Special=0x7f060025;
+        public static final int CC3=0x7f060029;
         /**  Room floor plan for building CC3 
  There isn't any floor 0/basicment for this building 
          */
-        public static final int CC3_0=0x7f06000c;
-        /**  There isn't any floor 0/basicment for this building 
+        public static final int CC3_0=0x7f060015;
+        /**  Room in CC3 floor 1 
          */
-        public static final int CC3_1=0x7f06000d;
-        /**  There isn't any floor 0/basicment for this building 
+        public static final int CC3_1=0x7f060016;
+        /**  Special room location in floor 1 
          */
-        public static final int CC3_2=0x7f06000e;
-        /**  There isn't any floor 0/basicment for this building 
+        public static final int CC3_1special=0x7f060017;
+        /**  Room in CC3 floor 2 
          */
-        public static final int CC3_3=0x7f06000f;
+        public static final int CC3_2=0x7f060018;
+        /**  Special room location in floor 2 
+         */
+        public static final int CC3_2special=0x7f060019;
+        /**  Room in CC3 floor 3 
+         */
+        public static final int CC3_3=0x7f06001a;
+        /**  Special room location in floor 3 
+         */
+        public static final int CC3_3special=0x7f06001b;
+        public static final int CC3_Special=0x7f060026;
+        /**  LBA, Library Annex, share building 
+ Floor 3 
+         */
+        public static final int LBA=0x7f06002a;
+        /**  LBA: share library floor plan 
+ There isn't any floor 0/basicment for this building 
+         */
+        public static final int LBA_0=0x7f06001c;
+        /**  Floor 0 special room 
+         */
+        public static final int LBA_0special=0x7f060020;
+        public static final int LBA_1=0x7f06001d;
+        /**  Floor 1 special room 
+         */
+        public static final int LBA_1special=0x7f060021;
+        /**  Floor 2 
+         */
+        public static final int LBA_2=0x7f06001e;
+        /**  Floor 2 special room 
+         */
+        public static final int LBA_2special=0x7f060022;
+        /**  Floor 3 
+         */
+        public static final int LBA_3=0x7f06001f;
+        /**  Floor 3 special room 
+         */
+        public static final int LBA_3special=0x7f060023;
+        public static final int LBA_Special=0x7f06002b;
         public static final int country_codes=0x7f060000;
         public static final int preferences_front_light_options=0x7f060002;
         public static final int preferences_front_light_values=0x7f060001;
+        public static final int specialResponses=0x7f060014;
         /**  List of building name for dropdown box in search layout 
          */
         public static final int strArrayBuilding=0x7f060003;
@@ -88,65 +153,67 @@ public final class R {
         public static final int share_via_barcode=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f09003a;
-        public static final int app_picker_list_item_icon=0x7f090014;
-        public static final int app_picker_list_item_label=0x7f090015;
-        public static final int arrayBuilding=0x7f09000c;
-        public static final int barcode_image_view=0x7f09001b;
-        public static final int bookmark_title=0x7f090016;
-        public static final int bookmark_url=0x7f090017;
-        public static final int contents_supplement_text_view=0x7f090022;
-        public static final int contents_text_view=0x7f090021;
+        public static final int LibraryButton=0x7f090012;
+        public static final int action_reset=0x7f09003c;
+        public static final int app_picker_list_item_icon=0x7f090016;
+        public static final int app_picker_list_item_label=0x7f090017;
+        public static final int arrayBuilding=0x7f09000d;
+        public static final int barcode_image_view=0x7f09001d;
+        public static final int bookmark_title=0x7f090018;
+        public static final int bookmark_url=0x7f090019;
+        public static final int bookstoreButton=0x7f090013;
+        public static final int clickDestination=0x7f09000f;
+        public static final int contents_supplement_text_view=0x7f090024;
+        public static final int contents_text_view=0x7f090023;
         public static final int decode=0x7f090000;
         public static final int decode_failed=0x7f090001;
         public static final int decode_succeeded=0x7f090002;
-        public static final int format_text_view=0x7f09001c;
+        public static final int format_text_view=0x7f09001e;
         public static final int fragmentContainer=0x7f09000b;
-        public static final int help_contents=0x7f090026;
-        public static final int history_detail=0x7f090028;
-        public static final int history_title=0x7f090027;
-        public static final int image_view=0x7f090025;
+        public static final int help_contents=0x7f090028;
+        public static final int history_detail=0x7f09002a;
+        public static final int history_title=0x7f090029;
+        public static final int image_view=0x7f090027;
+        public static final int kodiacCornerButton=0x7f090011;
         public static final int launch_product_query=0x7f090003;
         public static final int lookForText=0x7f090008;
-        public static final int menu_encode=0x7f090037;
-        public static final int menu_help=0x7f090036;
-        public static final int menu_history=0x7f090034;
-        public static final int menu_history_clear_text=0x7f090039;
-        public static final int menu_history_send=0x7f090038;
-        public static final int menu_settings=0x7f090035;
-        public static final int menu_share=0x7f090033;
-        public static final int meta_text_view=0x7f090020;
-        public static final int meta_text_view_label=0x7f09001f;
-        public static final int page_number_view=0x7f09002c;
-        public static final int preview_view=0x7f090018;
-        public static final int query_button=0x7f09002a;
-        public static final int query_text_view=0x7f090029;
+        public static final int menu_encode=0x7f090039;
+        public static final int menu_help=0x7f090038;
+        public static final int menu_history=0x7f090036;
+        public static final int menu_history_clear_text=0x7f09003b;
+        public static final int menu_history_send=0x7f09003a;
+        public static final int menu_settings=0x7f090037;
+        public static final int menu_share=0x7f090035;
+        public static final int meta_text_view=0x7f090022;
+        public static final int meta_text_view_label=0x7f090021;
+        public static final int mobiusHallButton=0x7f090014;
+        public static final int page_number_view=0x7f09002e;
+        public static final int preview_view=0x7f09001a;
+        public static final int query_button=0x7f09002c;
+        public static final int query_text_view=0x7f09002b;
         public static final int quit=0x7f090004;
-        public static final int radioButton1=0x7f090010;
-        public static final int radioButton2=0x7f090011;
-        public static final int radioButton3=0x7f090012;
-        public static final int radioButton4=0x7f090013;
-        public static final int radiogroup=0x7f09000f;
+        public static final int radiogroup=0x7f090010;
         public static final int restart_preview=0x7f090005;
-        public static final int result_button_view=0x7f090023;
-        public static final int result_list_view=0x7f09002b;
-        public static final int result_view=0x7f09001a;
+        public static final int result_button_view=0x7f090025;
+        public static final int result_list_view=0x7f09002d;
+        public static final int result_view=0x7f09001c;
         public static final int return_scan_result=0x7f090006;
+        public static final int roomNum=0x7f09000c;
         public static final int scanButton=0x7f090007;
-        public static final int searchButton=0x7f09000e;
-        public static final int share_app_button=0x7f09002e;
-        public static final int share_bookmark_button=0x7f09002f;
-        public static final int share_clipboard_button=0x7f090031;
-        public static final int share_contact_button=0x7f090030;
-        public static final int share_text_view=0x7f090032;
-        public static final int snippet_view=0x7f09002d;
-        public static final int status_view=0x7f090024;
+        public static final int searchButton=0x7f090015;
+        public static final int share_app_button=0x7f090030;
+        public static final int share_bookmark_button=0x7f090031;
+        public static final int share_clipboard_button=0x7f090033;
+        public static final int share_contact_button=0x7f090032;
+        public static final int share_text_view=0x7f090034;
+        public static final int snippet_view=0x7f09002f;
+        public static final int status_view=0x7f090026;
         public static final int textDirection=0x7f09000a;
-        public static final int textRoom=0x7f09000d;
+        public static final int textRoom=0x7f09000e;
         public static final int textView3=0x7f090009;
-        public static final int time_text_view=0x7f09001e;
-        public static final int type_text_view=0x7f09001d;
-        public static final int viewfinder_view=0x7f090019;
+        public static final int time_text_view=0x7f090020;
+        public static final int type_text_view=0x7f09001f;
+        public static final int viewfinder_view=0x7f09001b;
     }
     public static final class layout {
         public static final int activity_instructions=0x7f030000;
@@ -178,9 +245,11 @@ public final class R {
         public static final int action_settings=0x7f0a0076;
         public static final int app_name=0x7f0a0000;
         public static final int app_picker_name=0x7f0a0001;
-        public static final int bldTitle=0x7f0a0089;
+        public static final int bldTitle=0x7f0a008b;
         public static final int bookmark_picker_name=0x7f0a0002;
-        public static final int bookstore=0x7f0a007c;
+        public static final int bookstore=0x7f0a007e;
+        public static final int buildingDir=0x7f0a0094;
+        public static final int buildingTobuidling=0x7f0a0099;
         public static final int button_add_calendar=0x7f0a0003;
         public static final int button_add_contact=0x7f0a0004;
         public static final int button_book_search=0x7f0a0005;
@@ -204,7 +273,10 @@ public final class R {
         public static final int button_sms=0x7f0a0017;
         public static final int button_web_search=0x7f0a0018;
         public static final int button_wifi=0x7f0a0019;
-        public static final int cancelBut=0x7f0a0086;
+        public static final int cancelBut=0x7f0a0088;
+        public static final int cc1FloorDir=0x7f0a0096;
+        public static final int cc3FloorDir=0x7f0a0097;
+        public static final int clickDestination=0x7f0a007d;
         public static final int contents_contact=0x7f0a001a;
         public static final int contents_email=0x7f0a001b;
         public static final int contents_location=0x7f0a001c;
@@ -212,9 +284,14 @@ public final class R {
         public static final int contents_sms=0x7f0a001e;
         public static final int contents_text=0x7f0a001f;
         public static final int copyright=0x7f0a0078;
-        public static final int directionInfo=0x7f0a0084;
+        public static final int destination=0x7f0a009d;
+        public static final int directionInfo=0x7f0a0086;
         public static final int directionStr=0x7f0a007b;
-        public static final int emptyInput=0x7f0a008a;
+        public static final int emptyInput=0x7f0a008c;
+        public static final int exitCC1=0x7f0a009a;
+        public static final int exitCC3=0x7f0a009b;
+        public static final int exitLBA=0x7f0a009c;
+        public static final int floorDir=0x7f0a0092;
         public static final int hello_world=0x7f0a0077;
         public static final int history_clear_one_history_text=0x7f0a0021;
         public static final int history_clear_text=0x7f0a0020;
@@ -223,20 +300,23 @@ public final class R {
         public static final int history_empty_detail=0x7f0a0024;
         public static final int history_send=0x7f0a0025;
         public static final int history_title=0x7f0a0026;
-        public static final int invalidBuilding=0x7f0a008d;
-        public static final int invalidRoom=0x7f0a008c;
-        public static final int kodiacCorner=0x7f0a007f;
-        public static final int library=0x7f0a007e;
+        public static final int invalidBuilding=0x7f0a008f;
+        public static final int invalidRoom=0x7f0a008e;
+        public static final int kodiacCorner=0x7f0a0081;
+        public static final int library=0x7f0a0080;
         public static final int lookForStr=0x7f0a0079;
-        public static final int lookingFor=0x7f0a0083;
+        public static final int lookingFor=0x7f0a0085;
         public static final int menu_encode_mecard=0x7f0a0027;
         public static final int menu_encode_vcard=0x7f0a0028;
         public static final int menu_help=0x7f0a0029;
         public static final int menu_history=0x7f0a002a;
         public static final int menu_settings=0x7f0a002b;
         public static final int menu_share=0x7f0a002c;
-        public static final int mobiusHall=0x7f0a007d;
-        public static final int msgInput=0x7f0a008b;
+        /**  Menu item 
+         */
+        public static final int menuitem_reset=0x7f0a00a0;
+        public static final int mobiusHall=0x7f0a007f;
+        public static final int msgInput=0x7f0a008d;
         public static final int msg_bulk_mode_scanned=0x7f0a002d;
         public static final int msg_camera_framework_bug=0x7f0a002e;
         public static final int msg_default_format=0x7f0a002f;
@@ -261,7 +341,7 @@ public final class R {
         public static final int msg_share_text=0x7f0a0042;
         public static final int msg_sure=0x7f0a0043;
         public static final int msg_unmount_usb=0x7f0a0044;
-        public static final int okBut=0x7f0a0085;
+        public static final int okBut=0x7f0a0087;
         public static final int preferences_actions_title=0x7f0a0045;
         public static final int preferences_auto_focus_title=0x7f0a0046;
         public static final int preferences_bulk_mode_summary=0x7f0a0047;
@@ -307,19 +387,29 @@ public final class R {
         public static final int result_text=0x7f0a006f;
         public static final int result_uri=0x7f0a0070;
         public static final int result_wifi=0x7f0a0071;
-        public static final int roomTitle=0x7f0a0088;
+        /**  Direction string format 
+         */
+        public static final int roomDir=0x7f0a0090;
+        public static final int roomDirBuilding=0x7f0a009e;
+        public static final int roomFound=0x7f0a009f;
+        public static final int roomLBA=0x7f0a0091;
+        public static final int roomLoc=0x7f0a0093;
+        public static final int roomNum=0x7f0a007c;
+        public static final int roomTitle=0x7f0a008a;
         public static final int sbc_name=0x7f0a0072;
-        public static final int scan=0x7f0a0082;
-        public static final int search=0x7f0a0080;
-        public static final int startOver=0x7f0a0087;
-        public static final int testDir=0x7f0a008f;
+        public static final int scan=0x7f0a0084;
+        public static final int search=0x7f0a0082;
+        public static final int specialDir=0x7f0a0095;
+        public static final int startOver=0x7f0a0089;
+        public static final int testDir=0x7f0a00a2;
         /**  Testing string section 
          */
-        public static final int testLook=0x7f0a008e;
-        public static final int where=0x7f0a0081;
+        public static final int testLook=0x7f0a00a1;
+        public static final int where=0x7f0a0083;
         public static final int wifi_changing_network=0x7f0a0073;
         public static final int wifi_ssid_label=0x7f0a0074;
         public static final int wifi_type_label=0x7f0a0075;
+        public static final int yourLocation=0x7f0a0098;
     }
     public static final class style {
         /** 
