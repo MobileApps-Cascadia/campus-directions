@@ -45,6 +45,7 @@
    <string name="destination">Turn around.\nRoom %1$s is locate behind you.</string>
    <string name="roomDirBuilding">Take a %1$s and go forward become building %2$s. The room is locate on your %3$s.</string>
    <string name="roomFound">You\'re arrived at your destination, look Left or Right to find your room %1$s.</string>
+   <string name="invalidQRCode">You scanned an invalid QR Code\n[%1$s]\nPlease rescan QR code again.</string>
    
    <!-- Menu item -->
    <string name="menuitem_reset">Start Over</string>

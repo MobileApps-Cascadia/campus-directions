@@ -33,7 +33,9 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 		
 		if(savedInstanceState != null)
 			return;
-
+		
+		resetResult();
+		
 		if(findViewById(R.id.fragmentContainer) != null)
 		{
 			searchFragment = new SearchFragment();
@@ -53,10 +55,10 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 			//result string return from scanner
 			String result = intent.getStringExtra("SCAN_RESULT");
 			
-			splitScanResult(result); //split string value from qr code scan result
-			
-			//begin compile direction from result
-			compileDirection();
+			if(splitScanResult(result)) //split string value from qr code scan result				
+				compileDirection(); //begin compile direction from result
+			else
+				direction = "---> ERROR <---\n" + getResources().getString(R.string.invalidQRCode, result);
 
 			//send result to new fragment.
 			FragmentManager fm = getFragmentManager();
@@ -281,9 +283,13 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 	}
 	
 	// determine split the scan result content
-	public void splitScanResult(String str)
+	public boolean splitScanResult(String str)
 	{
 		String[] tempStr = str.split("-");
+
+		//check to see if QR code is valid string format
+		if(tempStr.length != 6) return false;
+
 		scanBuild = tempStr[0].trim();
 		scanFloor = Integer.parseInt(tempStr[1]);
 		scanSide = Integer.parseInt(tempStr[2]);
@@ -297,6 +303,12 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 		
 		//determine scan location of room number by second digit.
 		scanLocation = Integer.parseInt((scanRoom.replaceAll("[\\D]", "")).substring(1, 2));
+		
+		//if qr code string format is correct, check whether string contain right value or not.
+		if(scanFloor < 0 || scanIndex < 0 || scanBuild.equals("") || scanRoom.equals(""))
+			return false;
+
+		return true;
 	}
 	
 	// determine user input
@@ -318,6 +330,7 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 		scanRoom = null;
 		scanName = null;
 		scanExit = null;
+		scanLocation = -1;
 		searchClick = false;
 	}
 	
@@ -363,6 +376,7 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 				loc = "North End Building";								
 				break;
 			default:
+				loc = "Location Unknown";
 				break;
 		}
 		return loc;
