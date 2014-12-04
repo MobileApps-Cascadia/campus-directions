@@ -287,7 +287,7 @@ public class MainActivity extends Activity implements SearchFragment.SearchFragm
 		String[] tempStr = str.split("-");
 
 		//check to see if QR code is valid string format
-		if(tempStr.length != 6) return false;
+		if(tempStr.length < 5 && tempStr.length > 6) return false;
 
 		scanBuild = tempStr[0].trim();
 		scanFloor = Integer.parseInt(tempStr[1]);

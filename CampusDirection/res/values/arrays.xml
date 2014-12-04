@@ -289,8 +289,11 @@
     <!-- Room floor plan for building CC3 -->
     <string-array name="CC3_0"><!-- There isn't any floor 0/basicment for this building -->        
     </string-array>
-    <string-array name="CC3_1"><!-- Room in CC3 floor 1 -->         
-    </string-array>
+    <string-array name="CC3_1"><!-- Room in CC3 floor 1 -->
+        <item>135</item>         
+        <item>134</item>
+        <item>101xyz</item>         
+   	</string-array>
     <string-array name="CC3_1special"><!-- Special room location in floor 1 -->          
     </string-array>
     <string-array name="CC3_2"><!-- Room in CC3 floor 2 -->            
@@ -337,6 +340,17 @@
     </string-array>
     <string-array name="LBA_3special"><!-- Floor 3 special room -->
     </string-array>
+    
+    <!-- Book Store -->
+    <string-array name="BStore_0">
+        <item>100xyz</item>
+    </string-array>
+    
+    <!-- Building Bookstore -->
+    <string-array name="BStore">
+        <item>@array/BStore_0</item>
+    </string-array>
+    
     <!-- Building contain rooms in special location such behide elevator etc... -->    
     <string-array name="CC1_Special"> <!-- Special in building CC1 -->
         <item>@array/CC1_0special</item>
@@ -371,7 +385,7 @@
 	   	<item>@array/CC2_3</item>	
 	</string-array>
 	<string-array name="CC3">
-	    <item>@array/CC3_0</item>
+	    <item>@array/CC3_0</item> <!-- There isn't any floor leve (0) -->
 	    <item>@array/CC3_1</item>
 	   	<item>@array/CC3_2</item>
 	   	<item>@array/CC3_3</item>	
