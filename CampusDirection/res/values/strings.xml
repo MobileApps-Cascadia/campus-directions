@@ -38,17 +38,19 @@
    	<string name="roomLoc">Room is on your %1$s.</string>
    	<string name="buildingDir"></string>
    	<string name="specialDir">\n\nNote: Room %1$S is locate %2$s.</string>
-   	<string name="cc1FloorDir">Take the main stair from CC1 building to %1$s floor and turn %2$s. The room is locate on your %3$s.</string>
-   	<string name="cc3FloorDir">Take the main stair to %1$s floor and turn %2$s. The room is locate on your %3$s.</string>
+   	<string name="cc1FloorDir">Take the main stair from CC1 building to %1$s floor and turn %2$s. The room %3$s is locate on your %4$s.</string>
+   	<string name="cc3FloorDir">Take the main stair to %1$s floor and turn %2$s. The room %3$s is locate on your %4$s.</string>
    	<string name="yourLocation">Your Location:\nBuilding: %1$s, Floor: %2$s</string>
    	<string name="buildingTobuidling">You\'re in building %1$s and want to go to building %2$s.</string>
    	<string name="exitCC1">Exit building from West entrance on the 1st floor. The building %1$s is locate straight ahead on your %2$s.</string>
    	<string name="exitCC3">Exit building from South entrance on the 1st floor. The building %1$s is locate straight ahead on your %2$s.</string>
    	<string name="exitLBA">Exit building from West entrance on the 1st floor. Take a RIGHT, The building %1$s is locate on your %2$s straight ahead.</string>
-   	<string name="destination">Turn around.\nRoom %1$s is locate behind you.</string>
-   	<string name="roomDirBuilding">Take a %1$s and go forward become building %2$s. The room is locate on your %3$s.</string>
+   	<string name="exitLIB">Exit building from Est entrance on the 1st floor. Take a LEFT, The building %1$s is locate on your %2$s straight ahead.</string>
+   		<string name="destination">Turn around.\nRoom %1$s is locate behind you.</string>
+   	<string name="roomDirBuilding">Take a %1$s and go forward become building %2$s. The room %3$s is locate on your %4$s.</string>
    	<string name="roomFound">You\'re arrived at your destination, look Left or Right to find your room %1$s.</string>
    	<string name="invalidQRCode">You scanned an invalid QR Code\n[%1$s]\nPlease rescan QR code again.</string>
+   	<string name="errorQRCode">Unable to determine QR code you scanned. Please rescan or scan different QR code near by.</string>
    
    	<!-- Menu item -->
    	<string name="menuitem_reset">Start Over</string>

@@ -37,7 +37,8 @@ public class SearchFragment extends Fragment
    InstructionsFragment instructionsFragment;
    private EditText textRoom;
    private Spinner arrayBuilding;
-   private RadioGroup radioGroup;   ///for the radio buttons that are exact locations user is looking for   
+   private RadioGroup radioGroup;   ///for the radio buttons that are exact locations user is looking for
+   private String Kodiac = "Kodiac Corner", Library = "Library", Bookstore = "Book Store", Mobiushall = "Mobius Hall";
    
    // set AddEditFragmentListener when Fragment attached   
    @Override
@@ -124,19 +125,19 @@ public class SearchFragment extends Fragment
 
 	   switch (id){
 	   		case R.id.kodiacCornerButton:
-	   			tempBd = "CC1"; tempRm = "121"; tempFlr = 1; tempLoc = 2; MainActivity.lookFor = "Kodiac Corner";
+	   			tempBd = "CC1"; tempRm = "121"; tempFlr = 1; tempLoc = 2; MainActivity.lookFor = Kodiac;
 	   		break;
 	   		case R.id.LibraryButton:
-	   			tempBd = "LBA"; tempRm = "101"; tempFlr = 1; tempLoc = 0; MainActivity.lookFor = "Library";
+	   			tempBd = "LIB"; tempRm = "100"; tempFlr = 1; tempLoc = 0; MainActivity.lookFor = Library;
 	   		break;
 	   		case R.id.bookstoreButton:
-	   			tempBd = "Book Store"; tempRm = "100"; tempFlr = 1; tempLoc = 0; MainActivity.lookFor = "Book Store";
+	   			tempBd = "BS"; tempRm = "100"; tempFlr = 1; tempLoc = 0; MainActivity.lookFor = Bookstore;
 	   		break;
 	   		case R.id.mobiusHallButton:
-	   			tempBd = "CC3"; tempRm = "101"; tempFlr = 1; tempLoc = 0; MainActivity.lookFor = "Mobius Hall";
+	   			tempBd = "CC3"; tempRm = "101"; tempFlr = 1; tempLoc = 0; MainActivity.lookFor = Mobiushall;
 	   		break;
 	   		default:
-	   			tempBd = ""; tempRm = ""; tempFlr = -1; tempLoc = -1;
+	   			tempBd = "Unk"; tempRm = "Unk"; tempFlr = -1; tempLoc = -1;
 	   			break;
 	   }
 		
@@ -169,6 +170,11 @@ public class SearchFragment extends Fragment
 		   	case "LBA": //Share building: Library Annex
 		   		if(MainActivity.inputFloor == 1){
 		   			tempBld = res.obtainTypedArray(R.array.LBA);
+		   			return verifyRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));		   			
+		   		}else return false;		   		
+		   	case "LIB": //Share building: Library Annex
+		   		if(MainActivity.inputFloor == 1){
+		   			tempBld = res.obtainTypedArray(R.array.LIB);
 		   			return verifyRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));		   			
 		   		}else return false;		   		
 	   		default:
@@ -242,8 +248,7 @@ public class SearchFragment extends Fragment
    {
       switch (item.getItemId())
       {
-//         case R.id.action_add:
-//            listener.onAddMovie();
+//         case R.id.action_clear:
 //            return true;
       }
       

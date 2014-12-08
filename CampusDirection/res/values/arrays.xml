@@ -341,6 +341,28 @@
     <string-array name="LBA_3special"><!-- Floor 3 special room -->
     </string-array>
     
+    <!-- Library floor plane-->
+    <string-array name="LIB_0">
+        <item>000xyz</item>
+    </string-array>
+    <string-array name="LIB_1">
+        <item>100xyz</item>
+    </string-array>
+   	<string-array name="LIB_2">
+        <item>200xyz</item>
+    </string-array>
+   	<string-array name="LIB_3">
+        <item>300xyz</item>
+    </string-array>
+        
+    <!-- Library building -->
+    <string-array name="LIB">
+        <item>@array/LIB_0</item>
+        <item>@array/LIB_1</item>
+      	<item>@array/LIB_2</item>
+       	<item>@array/LIB_3</item>
+  	</string-array>
+    
     <!-- Book Store -->
     <string-array name="BStore_0">
         <item>100xyz</item>
