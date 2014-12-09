@@ -19,7 +19,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
@@ -37,8 +36,7 @@ public class SearchFragment extends Fragment
    InstructionsFragment instructionsFragment;
    private EditText textRoom;
    private Spinner arrayBuilding;
-   private RadioGroup radioGroup;   ///for the radio buttons that are exact locations user is looking for
-   private String Kodiac = "Kodiac Corner", Library = "Library", Bookstore = "Book Store", Mobiushall = "Mobius Hall";
+   private RadioGroup directLocations;   ///for the radio buttons that are exact locations user is looking for   
    
    // set AddEditFragmentListener when Fragment attached   
    @Override
@@ -69,9 +67,46 @@ public class SearchFragment extends Fragment
 	   arrayBuilding = (Spinner) view.findViewById(R.id.arrayBuilding);	      
 	   searchButton = (Button) view.findViewById(R.id.searchButton);
 	   
-	   radioGroup = (RadioGroup) view.findViewById(R.id.radiogroup); 
+	   
+	   ////////////////////////////////////////////////////////////////+++++++++++++
+	   //adding section for Radio Buttons//////////////////////////////+++++++++++++
+	    
+//	   directLocations = (RadioGroup) view.findViewById(R.id.radiogroup);
+//	   directLocations.setOnCheckedChangeListener(new OnCheckedChangeListener(){
+//		   
+//		   @Override		 
+//			public void onCheckedChanged(RadioGroup group, int checkedId) {
+//				// TODO Auto-generated method stub
+//			   RadioButton KodiacCorner = (RadioButton) view.findViewById(R.id.kodiacCornerButton);
+//			   RadioButton Library = (RadioButton) view.findViewById(R.id.LibraryButton);
+//			   RadioButton BookStore = (RadioButton) view.findViewById(R.id.bookstoreButton);
+//			   RadioButton Mobius = (RadioButton) view.findViewById(R.id.bookstoreButton);
+//			   
+//			   if (KodiacCorner.isChecked()){
+//				   arrayBuilding = "CC1";
+//				   textRoom="121";
+//			   }
+//			   if (Library.isChecked()){
+//				   arrayBuilding = "CC1";
+//				   textRoom="121";
+//			   }
+//			   if (BookStore.isChecked()){
+//				   arrayBuilding = "CC1";
+//				   textRoom="121";
+//			   }
+//			   if (Mobius.isChecked()){
+//				   arrayBuilding = "CC1";
+//				   textRoom="121";
+//			   }
+//		   }
+//
+//	   });
+//		
 	   
 	   
+	   
+	   
+		
 	   searchButton.setOnClickListener(new View.OnClickListener() {           ////////////////////////////////+++++
 	
 			@Override
@@ -90,8 +125,6 @@ public class SearchFragment extends Fragment
 				 * 4. user have option to Start Over, this will available on main menu selection.
 				 *    this will return (pop) back to search_activity screen.
 				 */
-				
-				int selected = radioGroup.getCheckedRadioButtonId();
 
 				// launch Instruction/Result fragment after validate user input				
 				if(validateRoom()){
@@ -104,47 +137,13 @@ public class SearchFragment extends Fragment
 					}						
 				}else{
 				
-					if(selected > 0){	//is there any radio button selected
-						//determine what radio button is selected
-						onSelectRadioButton(selected);
-						instructionFrag();	//launching instruction/result fragment				
-					}else{
-						//display dialog message to ask user enter room. Room number field can't be leave blank.
-						showDialog(R.string.emptyInput, R.string.msgInput, "");
-					}
+					//display dialog message to ask user enter room. Room number field can't be leave blank.
+					showDialog(R.string.emptyInput, R.string.msgInput, "");
 				}
 			}
 		});		      
 	   return view;
    }
-   
-   public void onSelectRadioButton(int id)
-   {
-	   String tempBd, tempRm;
-	   int tempFlr, tempLoc;
-
-	   switch (id){
-	   		case R.id.kodiacCornerButton:
-	   			tempBd = "CC1"; tempRm = "121"; tempFlr = 1; tempLoc = 2; MainActivity.lookFor = Kodiac;
-	   		break;
-	   		case R.id.LibraryButton:
-	   			tempBd = "LIB"; tempRm = "100"; tempFlr = 1; tempLoc = 0; MainActivity.lookFor = Library;
-	   		break;
-	   		case R.id.bookstoreButton:
-	   			tempBd = "BS"; tempRm = "100"; tempFlr = 1; tempLoc = 0; MainActivity.lookFor = Bookstore;
-	   		break;
-	   		case R.id.mobiusHallButton:
-	   			tempBd = "CC3"; tempRm = "101"; tempFlr = 1; tempLoc = 0; MainActivity.lookFor = Mobiushall;
-	   		break;
-	   		default:
-	   			tempBd = "Unk"; tempRm = "Unk"; tempFlr = -1; tempLoc = -1;
-	   			break;
-	   }
-		
-	   //set preset location
-	   MainActivity.setSplitInput(tempBd, tempRm, tempFlr, tempLoc);
-   }
-  
    
    // check to see if the room user enter existed in that building/floor
    public boolean isRoom()
@@ -170,11 +169,6 @@ public class SearchFragment extends Fragment
 		   	case "LBA": //Share building: Library Annex
 		   		if(MainActivity.inputFloor == 1){
 		   			tempBld = res.obtainTypedArray(R.array.LBA);
-		   			return verifyRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));		   			
-		   		}else return false;		   		
-		   	case "LIB": //Share building: Library Annex
-		   		if(MainActivity.inputFloor == 1){
-		   			tempBld = res.obtainTypedArray(R.array.LIB);
 		   			return verifyRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));		   			
 		   		}else return false;		   		
 	   		default:
@@ -248,7 +242,8 @@ public class SearchFragment extends Fragment
    {
       switch (item.getItemId())
       {
-//         case R.id.action_clear:
+//         case R.id.action_add:
+//            listener.onAddMovie();
 //            return true;
       }
       
