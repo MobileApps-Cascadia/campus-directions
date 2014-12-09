@@ -1,5 +1,5 @@
 // Campus Direction quick splash screen
-package com.campusdirection;
+package edu.cascadia.campusdirections;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,8 +8,8 @@ import android.os.Handler;
  
 public class SplashScreen extends Activity {
  
-    // Splash screen timer set for 5 seconds
-    private static int SPLASH_TIME_OUT = 5000;
+    // Splash screen timer set for 3 seconds
+    private static int SPLASH_TIME_OUT = 3000;
  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +22,8 @@ public class SplashScreen extends Activity {
             public void run() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
-                Intent i = new Intent(SplashScreen.this, MainActivity.class);
-                startActivity(i);
+                Intent splashscreen = new Intent(SplashScreen.this, MainActivity.class);
+                startActivity(splashscreen);
  
                 // close this activity
                 finish();
