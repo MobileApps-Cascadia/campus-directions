@@ -91,15 +91,16 @@
         <item>150</item>
         <item>151</item>
         <item>152</item>
-        <item>153</item>       
+        <item>153</item> 
+        <item>154</item>                   
     </string-array>
     
     <string-array name="CC1_2">
         <item>233xyz</item><!-- stairs on far left of map ODD-->
         <item>230</item>
         <item>231</item>
-        <item>220</item>
         <item>221</item>
+        <item>220</item>
         <item>210</item>
         <item>211</item>
         <item>207xyz</item><!-- ladies restroom ODD-->
@@ -124,7 +125,7 @@
     </string-array>
     
     <string-array name="CC1_2special">
-        <item>202</item>
+        
         <item>205</item>
         <item>203</item>
         <item>243</item>
@@ -156,9 +157,9 @@
    	    <item>302</item>
    	    <item>301xyz</item><!-- elevator ODD -->
    	    <item>000xyz</item><!-- center stairs EVEN -->
-   	    <item>343xyz</item><!-- men's room ODD -->
+   	    <item>341</item>
         <item>340</item>
-        <item>341</item>
+        <item>343xyz</item><!-- men's room ODD -->
         <item>351</item>
         <item>350</item>    
     </string-array>
@@ -224,7 +225,7 @@
    	    <item>260</item>
    	    <item>261</item>
    	    <item>271xyz</item><!-- ladies restroom ODD -->
-   	    <item>280A</item><!-- contains a group of rooms -->
+   	    <item>280</item><!-- contains a group of rooms -->
    	    <item>280B</item>
    	    <item>280C</item>
    	    <item>280D</item>
@@ -232,7 +233,7 @@
    	    <item>280F</item>
    	    <item>280G</item>
    	    <item>280H</item>
-   	    <item>281A</item><!-- contains a group of rooms -->
+   	    <item>281</item><!-- contains a group of rooms -->
    	    <item>281B</item>
    	    <item>281C</item>
    	    <item>281D</item>
@@ -287,27 +288,127 @@
     
     
     <!-- Room floor plan for building CC3 -->
-    <string-array name="CC3_0"><!-- There isn't any floor 0/basicment for this building -->        
+    <string-array name="CC3_0"><!-- There isn't any floor 0/basement for this building -->        
     </string-array>
+    
     <string-array name="CC3_1"><!-- Room in CC3 floor 1 -->
+        <item>137xyz</item>
         <item>135</item>         
         <item>134</item>
-        <item>101xyz</item>         
+        <item>125</item>
+        <item>127</item>
+        <item>129</item>
+        <item>131</item>
+        <item>126</item>
+        <item>123</item>
+        <item>120</item>
+        <item>121</item>
+        <item>000xyz</item><!-- stairs -->
+        <item>110xyz</item> <!-- elevator -->  
+        <item>108xyz</item> <!-- vendors/snacks -->
+        <item>106xyz</item> <!-- unidentified space/closet? -->
+        <item>105A</item><!-- ladies' restroom -->
+        <item>105B</item><!--  mens' restroom -->
+        <item>103</item>
+        <item>104A</item><!-- men's locker room -->
+        <item>104B</item><!-- ladies' locker room -->
+        <item>101xyz</item>  <!-- receiving Area --> 
+        <item>100xyz</item>   <!-- stairs on EVEN side of building -->
    	</string-array>
-    <string-array name="CC3_1special"><!-- Special room location in floor 1 -->          
+   	
+    <string-array name="CC3_1special"><!-- Special room location in floor 1 -->
+        <item>125</item>
+        <item>127</item>
+        <item>129</item>
+        <item>131</item>
     </string-array>
-    <string-array name="CC3_2"><!-- Room in CC3 floor 2 -->            
+    
+    <string-array name="CC3_2"><!-- Room in CC3 floor 2 -->  
+        <item>237xyz</item>
+        <item>235</item>
+        <item>234</item>
+        <item>227</item>
+        <item>226</item>
+        <item>223</item>
+        <item>220</item>
+        <item>221</item>
+        <item>000xyz</item><!-- stairs -->
+        <item>208xyz</item><!-- elevator -->
+        <item>206xyz</item><!-- unidentified space /closet? -->
+        <item>205xyz</item><!-- restrooms -->
+        <item>204xyz</item><!-- unidentified room -->
+        <item>202xyz</item><!-- unidentified room -->
+        <item>203</item>
+        <item>201</item>
+        <item>200xyz</item><!-- stairs on the EVEN side -->
     </string-array>
+    
     <string-array name="CC3_2special"><!-- Special room location in floor 2 -->            
     </string-array>
-    <string-array name="CC3_3"><!-- Room in CC3 floor 3 -->            
+    
+    <string-array name="CC3_3"><!-- Room in CC3 floor 3 -->   
+        <item>340xyz</item><!-- stairs -->
+        <item>330</item>
+        <item>332</item>
+        <item>336</item>
+        <item>338</item>
+        <item>343</item>
+        <item>341</item>
+        <item>339</item>
+        <item>328</item>
+        <item>337</item>
+        <item>335</item>
+        <item>326</item>
+        <item>333</item>
+        <item>331</item>
+        <item>329</item> 
+        <item>327</item>
+        <item>324</item>
+        <item>325</item>
+        <item>323</item>
+        <item>321</item> 
+        <item>322</item>
+        <item>320</item> 
+ 
+        <item>000xyz</item><!-- stairs -->
+        <item>307xyz</item><!-- elevator -->
+        <item>305xyz</item><!-- bathrooms -->
+        <item>303xyz</item><!-- vending -->
+        <item>301xyz</item><!-- Maintenance -->
+        <item>300xyz</item> <!-- stairs on EVEN side -->     
     </string-array>
-    <string-array name="CC3_3special"><!-- Special room location in floor 3 -->            
+    
+    <string-array name="CC3_3special"><!-- Special room location in floor 3 -->  
+        <item>330</item>
+        <item>332</item>
+        <item>336</item>
+        <item>338</item>
+        <item>343</item>
+        <item>341</item>
+        <item>339</item>
+        <item>328</item>
+        <item>337</item>
+        <item>335</item>
+        <item>326</item>
+        <item>333</item>
+        <item>331</item>
+        <item>329</item> 
+        <item>327</item>
+        <item>324</item>
+        <item>325</item>
+        <item>323</item>
+        <item>321</item> 
+        <item>322</item>
+        <item>320</item> 
     </string-array>
     
     <!-- LBA: share library floor plan -->
-    <string-array name="LBA_0"><!-- There isn't any floor 0/basicment for this building -->            
+    <string-array name="LBA_0"><!-- There isn't any floor 0/basement for this building -->            
     </string-array>
+    
+    <string-array name="LBA_0special"><!-- There isn't any floor 0/basement for this building -->            
+    </string-array>
+    
     <string-array name="LBA_1"><!-- Floor 1 -->
         <item>101</item>            
         <item>102</item>            
@@ -328,14 +429,25 @@
         <item>107</item>            
         <item>108</item>            
    	</string-array>
+   	
+    <string-array name="LBA_1special"><!-- Floor 1 special room -->
+        <item>101</item>            
+        <item>102</item>   
+        <item>103</item>            
+        <item>104</item>            
+        <item>105</item>            
+        <item>106</item>            
+        <item>107</item>            
+        <item>108</item>
+    </string-array>
+    
     <string-array name="LBA_2"><!-- Floor 2 -->
     </string-array>
+    
     <string-array name="LBA_3"><!-- Floor 3 -->
     </string-array>
-    <string-array name="LBA_0special"><!-- Floor 0 special room -->
-    </string-array>
-    <string-array name="LBA_1special"><!-- Floor 1 special room -->
-    </string-array>
+    
+    
     <string-array name="LBA_2special"><!-- Floor 2 special room -->
     </string-array>
     <string-array name="LBA_3special"><!-- Floor 3 special room -->
@@ -381,7 +493,7 @@
       	<item>@array/CC1_3special</item>
   	</string-array>
     <string-array name="CC2_Special"> <!-- Special in building CC2 -->
-        <item>@array/CC2_0special</item> <!-- not special room found on this floor (level 0) -->
+        <item>@array/CC2_0special</item> <!-- no special rooms found on this floor (level 0) -->
         <item>@array/CC2_1special</item>
        	<item>@array/CC2_2special</item>
       	<item>@array/CC2_3special</item>

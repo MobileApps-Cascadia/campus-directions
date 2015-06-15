@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="zero">0</string>
+    <string name="first">1</string>
+    <string name="second">2</string>
+    <string name="third">3</string>
+    <string name="fourth">4</string>
+    <string name="fifth">5</string>
+    <string name="sixth">6</string>
+    <string name="seventh">7</string>
+    
+    <string name="west">al oeste </string>
+    <string name="east">al este</string>
+    <string name="south">al sur</string>
+    <string name="north">al norte</string>
+    <string name="left">izquierda</string>
+    <string name="right">derecha</string>
+    <string name="up">Subir al</string>
+    <string name="down">Ir a</string>
+    <string name="not">%1$s</string>    
+    <string name="errorHeader">---&#62; ERROR &#60;---</string>
+    <string name="directionHeader">---&#62; Dirección &#60;---</string>
+    <string name="specialDirection">en un área separado desde el pasillo principal. Mirar detrás de la zona de trabajo del estudiante o el área sentada.</string>
+    <string name="center">centro del edificio</string>
+    <string name="southEnd">Parte sur del edificio</string>
+    <string name="northEnd">parte norte del edificio</string>
+    <string name="TakeCC2Stairs">Tome las escaleras norte en CC2. Entonces&#8230;</string>
+    <string name="TakeCC1Stairs">Tome las escaleras principales en CC1. Entonces&#8230;</string>
+    <string name="unknownBuild">ese edificio no es reconocido. Por favor escanear el código QR otra vez.</string>
+    <string name="leftPastCC1">izquierda, pasando el edificio CC1</string>
+    <string name="throughFFT">a través de Food For Thought</string>
+    <string name="cc33rdfloor">en un pasillo que va de oeste desde el pasillo principal. Usted tomará un giro de oeste desde el pasillo principal, y luego las habitaciones se encontrará a su derecha o izquierda cuando proceda a través de este pasillo en forma de U.</string> 
+	<string name="inUHall"> después de haber introducido la U en forma de pasillo</string>
+    <string name="unknownLoc">Esta ubicación es desconocida</string>
+	
+    <string name="app_name">Cascadia Direcciones</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="hello_world">Campus Direcciones \nJennifer Bronson\'s pasantía</string>
+    <string name="copyright">Bytes, Bits &#38; Nybbles, LLC</string>
+    <string name="lookForStr">Que está buscando: %1$s</string>
+    <string name="QRCodeLabel">Escanear un código QR nuevo en cualquier momento</string>
+    <string name="directionStr">Por favor, encontrar un código QR cerca, luego haga clic en el botón "escanear código QR" de abajo.</string>
+    
+    <string name="roomNum">Entre su número de habitación del destino aquí (excluya cualquier cartas):</string>
+    <string name="clickDestination">O, haga clic en su destino</string>
+    
+   	<string name="bookstore">Tienda de Libros de Escuela</string>
+   	<string name="mobiusHall">Mobius Hall</string>
+   	<string name="library">La Librería</string>
+   	<string name="kodiacCorner">Kodiac Corner</string>
+   	<string name="libraryAnnex">Anexo de Biblioteca</string>
+   	<string name="search">Buscar</string>
+   	<string name="where">¿Dónde quieres ir?</string>
+   	<string name="scan">Escanear un código QR</string>
+   	<string name="lookingFor">Usted está buscando</string>
+   	<string name="directionInfo">Información de la Dirección</string>
+   	<string name="okBut">OK</string>
+   	<string name="cancelBut">Cancelar</string>
+   	<string name="startOver">Volver a empezar</string>
+   	<string name="roomTitle">La habitación no se ha encontrado</string>
+   	<string name="bldTitle">El edificio no se ha encontrado</string>
+   	<string name="emptyInput">Se necesita un número de habitación</string>
+	<string name="msgInput">El número de habitación ingresado no es válido. Por favor, introduzca el número de habitación que usted está buscando, o seleccione una ubicación de las indicadas a continuación.</string>
+   	<string name="invalidRoom">TEl número de la habitación [%1$s] no se ha encontrado. Por favor vuelva a escribir el número de habitación siguiendo el formato "031".</string>
+   	<string name="invalidBuilding">El edificio [%1$s] no se ha encontrado.\nPor favor verificar el edificio y volver a entrar en él.</string>
+   
+   	<!-- Direction string format -->
+   	<string name="roomDir">Gire a la %1$s y caminar por el pasillo. La habitación %2$s está situado a su %3$s</string>
+   	<string name="roomLBA">Las habitaciones 101 a 104 A-G están por delante. Para habitaciones 105 a 108 A-C, gire a la derecha y pasar por el pasillo de camino.</string>
+   	<string name="floorDir">%1$s nivel %2$s.</string>
+   	<string name="roomLoc">La habitación está a la %1$s.</string>
+   	<string name="buildingDir"></string>
+   	<string name="specialDir">\n\nAtención: Habitación %1$S se encuentra %2$s.</string>
+   	<string name="cc1FloorDir">Tomar las escaleras principales en el CC1 a nivel %1$s y gire a la %2$s. La habitación %3$s está a la %4$s.</string>
+   	<string name="cc3FloorDir">Tomar las escaleras principales a nivel %1$s y gire a la %2$s. La habitación %3$s La habitación %4$s</string>
+   	<string name="yourLocation">Su ubicación actual es:\nEdificio: %1$s, Piso: %2$s</string>
+   	<string name="buildingTobuidling">Usted está en el edificio %1$s y quiero ir a edificio %2$s.</string>
+   	
+   	<string name="exitCC1">Salga del edificio por la puerta oeste del primer piso. El edificio %1$s estará a su %2$s.</string>
+   	<string name="exitCC3">Salga del edificio por la puerta sur del primer piso. Tome un izquierdo, baje a la colina y vaya al sur en la acera principal. El edificio %1$s estará en el lado %2$s.</string>
+   	<string name="exitLBA">Salga del edificio por la puerta oeste del primer piso. Gire a la derecha. El edificio %1$s estará en el lado %2$s.</string>
+   	<string name="exitLIB">Salga del edificio por la puerta este del primer piso. Gire a la izquierda. El edificio %1$s estará en el lado %2$s.</string>
+   	<string name="exitTheXand">Salga del edificio %1$s a través de la puerta principal en el primer piso y a la %2$s. El edificio %3$s estará en el lado %4$s.</string>
+   	<string name="exitAndStright">Salga del edificio por la puerta principal y su destino es recto.</string>
+   	    
+   	<string name="destination">Dar la vuelta.\nLa habitación %1$s está detrás de usted.</string>
+   	<string name="roomDirBuilding">Gire a la %1$s y caminar hacia adelante en la construcción de %2$s. La habitación %3$s está en el lado %4$s.</string>
+   	<string name="roomFound">Estás en tu destino.  Mire a su alrededor para encontrar la puerta de la habitación %1$s.</string>
+   	<string name="invalidQRCode">Que el código QR no es válido\n[%1$s]\nBusque un Cascadia Direcciones código QR.</string>
+   	<string name="errorQRCode">No soy capaz de leer ese código. Buscar otro código QR.</string>
+   
+   	<!-- Menu item -->
+   	<string name="menuitem_reset">Volver a empezar</string>
+   
+    <!-- Testing string section -->
+    <string name="testLook">Usted está buscando:\nEl edificio: %1$s\nPiso: %2$s\nLa habitación: %3$s\nLugar: %4$s</string>
+    <string name="testDir">El código QR piezas son:\nEl edificio: %1$s\nPiso: %2$s\nLa habitación: %3$s\nEl lado: %4$s\nIndice: %5$s\nLa habitación es: %6$s</string>
+    <!-- End testing -->
+    
+</resources>

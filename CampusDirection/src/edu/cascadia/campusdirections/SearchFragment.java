@@ -37,10 +37,10 @@ public class SearchFragment extends Fragment
    InstructionsFragment instructionsFragment;
    private EditText textRoom;
    private Spinner arrayBuilding;
-   private RadioGroup radioGroup;   ///for the radio buttons that are exact locations user is looking for
-   private String Kodiac = "Kodiac Corner", Library = "Library", Bookstore = "Book Store", Mobiushall = "Mobius Hall";
+   private RadioGroup radioGroup;   ///for the radio buttons that are the exact location the user is looking for
+  // private String Kodiac = "Kodiac Corner", Library = "Library", Bookstore = "Book Store", Mobiushall = "Mobius Hall", LibraryAnnex = "Library Annex";
    
-   // set AddEditFragmentListener when Fragment attached   
+   // set AddEditFragmentListener when Fragment is attached   
    @Override
    public void onAttach(Activity activity)
    {
@@ -63,7 +63,7 @@ public class SearchFragment extends Fragment
 	   super.onCreateView(inflater, container, savedInstanceState);    
 	   final View view = inflater.inflate(R.layout.activity_search_screen, container, false);
 	   
-	   //get user input building/room number
+	   //get user input for the building/room number
 	   textRoom = (EditText) view.findViewById(R.id.textRoom);
 //	   textRoom.setRawInputType(InputType.TYPE_CLASS_NUMBER);
 	   arrayBuilding = (Spinner) view.findViewById(R.id.arrayBuilding);	      
@@ -80,14 +80,14 @@ public class SearchFragment extends Fragment
 				MainActivity.specialDirection = ""; //reset special room location
 				MainActivity.searchClick = false;	//reset
 
-				/* when searchButton click,
-				 * do all the validation to make sure room number user enter is valid.
+				/* when the searchButton is clicked,
+				 * do all the validation to make sure the room number entered is valid.
 				 * 
-				 * If everything correct, then OPEN the "instruction_activity".
-				 * 1. when "instruction_activity" fragment is open. the scan will automatic open
-				 * 2. when scan complete, return back to "instruction_activity".
-				 * 3. User make rescan again anytime.
-				 * 4. user have option to Start Over, this will available on main menu selection.
+				 * If everything is correct, then OPEN the "instruction_activity".
+				 * 1. when the "instruction_activity" fragment is opened the scan will auto open
+				 * 2. when scan is complete, return back to "instruction_activity".
+				 * 3. User can rescan again at anytime.
+				 * 4. user has option to Start Over, this will be available on the main menu selection.
 				 *    this will return (pop) back to search_activity screen.
 				 */
 				
@@ -125,16 +125,19 @@ public class SearchFragment extends Fragment
 
 	   switch (id){
 	   		case R.id.kodiacCornerButton:
-	   			tempBd = "CC1"; tempRm = "121"; tempFlr = 1; tempLoc = 2; MainActivity.lookFor = Kodiac;
+	   			tempBd = "CC1"; tempRm = "121"; tempFlr = 1; tempLoc = 2; MainActivity.lookFor = getResources().getString(R.string.kodiacCorner);
 	   		break;
 	   		case R.id.LibraryButton:
-	   			tempBd = "LIB"; tempRm = "100"; tempFlr = 1; tempLoc = 0; MainActivity.lookFor = Library;
+	   			tempBd = "LIB"; tempRm = "100"; tempFlr = 1; tempLoc = 0; MainActivity.lookFor = getResources().getString(R.string.library);
+	   		break;
+	   		case R.id.LibraryAnnexButton:
+	   			tempBd = "LBA"; tempRm = "103"; tempFlr = 1; tempLoc = 0; MainActivity.lookFor = getResources().getString(R.string.libraryAnnex);
 	   		break;
 	   		case R.id.bookstoreButton:
-	   			tempBd = "BS"; tempRm = "100"; tempFlr = 1; tempLoc = 0; MainActivity.lookFor = Bookstore;
+	   			tempBd = "BS"; tempRm = "100"; tempFlr = 1; tempLoc = 0; MainActivity.lookFor = getResources().getString(R.string.bookstore);
 	   		break;
 	   		case R.id.mobiusHallButton:
-	   			tempBd = "CC3"; tempRm = "101"; tempFlr = 1; tempLoc = 0; MainActivity.lookFor = Mobiushall;
+	   			tempBd = "CC3"; tempRm = "101"; tempFlr = 1; tempLoc = 0; MainActivity.lookFor = getResources().getString(R.string.mobiusHall);
 	   		break;
 	   		default:
 	   			tempBd = "Unk"; tempRm = "Unk"; tempFlr = -1; tempLoc = -1;
@@ -163,7 +166,7 @@ public class SearchFragment extends Fragment
 	   				return verifyRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));
 	   			}else return false;
 	   		case "CC3":
-	   			if(MainActivity.inputFloor > 0 && MainActivity.inputFloor < 3){
+	   			if(MainActivity.inputFloor > 0 && MainActivity.inputFloor < 4){//changed final 3 to 4 and got cc3-300 floors to be recognized!
 	   				tempBld = res.obtainTypedArray(R.array.CC3);
 	   				return verifyRoom(res.getStringArray(tempBld.getResourceId(MainActivity.inputFloor, 0)));
 	   			}else return false;
@@ -231,7 +234,7 @@ public class SearchFragment extends Fragment
 		FragmentTransaction ft = fm.beginTransaction();
 		ft.replace(R.id.fragmentContainer, instructionsFragment);
 		ft.addToBackStack(null);
-		ft.commit(); // causes CollectionListFragment to displa		      
+		ft.commit(); // causes CollectionListFragment to display		      
    }
    
    // display this fragment's menu items
@@ -269,16 +272,7 @@ public class SearchFragment extends Fragment
         		//leave blank if just close window only.
         	}
         });
-	    /*
-	    displayMsg.setNegativeButton(getResources().getText(R.string.cancelBut),
-	    	new DialogInterface.OnClickListener(){
-        	public void onClick(DialogInterface dialog, int arg1) {
-        		//do something when Cancel button click
-        		//leave blank if just close window only.
-        	 }
-        });
- 		*/
-        // display message to user
+	    
 	    displayMsg.show();
     }   
 }
