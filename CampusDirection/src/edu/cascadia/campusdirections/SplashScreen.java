@@ -1,4 +1,4 @@
-// Campus Direction quick splash screen
+// Cascadia Direction's quick splash screen
 package edu.cascadia.campusdirections;
 
 import android.app.Activity;
@@ -21,11 +21,11 @@ public class SplashScreen extends Activity {
             @Override
             public void run() {
                 // This method will be executed once the timer is over
-                // Start your app main activity
+                // Starts your app's main activity
                 Intent splashscreen = new Intent(SplashScreen.this, MainActivity.class);
                 startActivity(splashscreen);
  
-                // close this activity
+                // closes this activity
                 finish();
             }
         }, SPLASH_TIME_OUT);

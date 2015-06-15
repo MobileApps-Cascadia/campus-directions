@@ -1,25 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Campus Direction</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Campus Direction \nBIT272 Final Project</string>
-    <string name="copyright">CCC @ 2014</string>
-    <string name="lookForStr">Looking For: %1$s</string>
-    <string name="QRCodeLabel">Scan New QR Code Again Anytime</string>
-    <string name="directionStr">Please find QR Code near by then click on Scan QR Code button below.</string>
+    <string name="zero">Level 0</string>
+    <string name="first">1st</string>
+    <string name="second">2nd</string>
+    <string name="third">3rd</string>
+    <string name="fourth">4th</string>
+    <string name="fifth">5th</string>
+    <string name="sixth">6th</string>
+    <string name="seventh">7th</string>
     
-    <string name="roomNum">Enter your destination room number</string>
+    <string name="west">WEST</string>
+    <string name="east">EAST</string>
+    <string name="south">SOUTH</string>
+    <string name="north">NORTH</string>
+    <string name="left">LEFT</string>
+    <string name="right">RIGHT</string>
+    <string name="up">UP</string>
+    <string name="down">DOWN</string>
+    <string name="not">%1$s</string>    
+    <string name="errorHeader">---&#62; ERROR &#60;---</string>
+    <string name="directionHeader">---&#62; Directions &#60;---</string>
+    <string name="specialDirection">in an area separated from the main hallway. Look behind the Student Break-out or sitting area.</string>
+    <string name="center">CENTER of the building</string>
+    <string name="southEnd">SOUTH end of the building</string>
+    <string name="northEnd">NORTH end of the building</string>
+    <string name="TakeCC2Stairs">Take the Northern Stairs in CC2. Then&#8230;</string>
+    <string name="TakeCC1Stairs">Take the Main Stairs in CC1. Then&#8230;</string>
+    <string name="unknownBuild">Building is unknown. Please rescan the QR code again.</string>
+    <string name="leftPastCC1">LEFT past the CC1 building</string>
+    <string name="throughFFT">through Food For Thought</string>
+    <string name="cc33rdfloor">in a hallway that branches off West of the main hallway. You will take a West turn off of the main hall, and then rooms will be found to your right or left as you proceed through this U shaped hallway.</string> 
+	<string name="inUHall"> after you\'ve entered the U shaped hallway</string>
+    <string name="unknownLoc">Location Is Unknown</string>
+	
+    <string name="app_name">Cascadia Directions</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Campus Directions \nBIT272 Final Project</string>
+    <string name="findYourWay">Find your way around campus.</string>
+    <string name="copyright">Bytes, Bits &#38; Nybbles, LLC</string>
+    <string name="lookForStr">You are looking For: %1$s</string>
+    <string name="QRCodeLabel">Scan A New QR Code At Anytime</string>
+    <string name="directionStr">Please find A QR Code nearby, then click on the SCAN QR Code button below.</string>
+    
+    <string name="roomNum">Enter your destination room number (leave off any letters):</string>
     <string name="clickDestination">Or click on your destination</string>
     
    	<string name="bookstore">Book Store</string>
    	<string name="mobiusHall">Mobius Hall</string>
    	<string name="library">Library</string>
    	<string name="kodiacCorner">Kodiac Corner</string>
+   	<string name="libraryAnnex">Library Annex</string>
    	<string name="search">Search</string>
    	<string name="where">Where do you want to go?</string>
-   	<string name="scan">Scan QR Code</string>
-   	<string name="lookingFor">Looking for</string>
+   	<string name="scan">Scan A QR Code</string>
+   	<string name="lookingFor">You Are Looking for</string>
    	<string name="directionInfo">Direction information</string>
    	<string name="okBut">OK</string>
    	<string name="cancelBut">Cancel</string>
@@ -27,30 +62,36 @@
    	<string name="roomTitle">Room Not Found</string>
    	<string name="bldTitle">Building Not Found</string>
    	<string name="emptyInput">Room Is Empty</string>
-	<string name="msgInput">Room you entered is invalid or empty field. Please enter room number you\'re looking for.\n\nOr select preset location below.</string>
-   	<string name="invalidRoom">Room number [%1$s] you entered not found. Please verify room number and re-enter following format Building-Room.\n\nFor example: CC1-041, must include zero (0) in front 41.</string>
-   	<string name="invalidBuilding">The building [%1$s] you entered not found.\nPlease verify building and re-enter following format CC1 exmple.</string>
+	<string name="msgInput">The room you entered is invalid or an empty field. Please enter the room number you\'re looking for.\n\nOr select a preset location below.</string>
+   	<string name="invalidRoom">The room number [%1$s] was not found. Please verify the room number and re-enter it following the format of BUILDING-ROOM.\n\nFor example, CC1-041 must include the zero (0) in front of 41.</string>
+   	<string name="invalidBuilding">The building [%1$s] was not found.\nPlease verify the building and re-enter it.</string>
    
    	<!-- Direction string format -->
-   	<string name="roomDir">Take a %1$s and go forward down the hall. The room %2$s is locate on your %3$s.</string>
-   	<string name="roomLBA">Rooms 101 thru 104 A-G go straight ahead. Rooms 105 thru 108 A-C, take a RIGHT follow the hall way.</string>
-   	<string name="floorDir">Go %1$s to %2$s floor.</string>
-   	<string name="roomLoc">Room is on your %1$s.</string>
+   	<string name="roomDir">Take a %1$s and walk down the hall. The room %2$s is located on your %3$s</string>
+   	<string name="roomLBA">Rooms 101 through 104 A-G are straight ahead. For rooms 105 thru 108 A-C, take a RIGHT and follow the hall way.</string>
+   	<string name="floorDir">Go %1$s to the %2$s floor.</string>
+   	<string name="roomLoc">The room is on your %1$s.</string>
    	<string name="buildingDir"></string>
-   	<string name="specialDir">\n\nNote: Room %1$S is locate %2$s.</string>
-   	<string name="cc1FloorDir">Take the main stair from CC1 building to %1$s floor and turn %2$s. The room %3$s is locate on your %4$s.</string>
-   	<string name="cc3FloorDir">Take the main stair to %1$s floor and turn %2$s. The room %3$s is locate on your %4$s.</string>
-   	<string name="yourLocation">Your Location:\nBuilding: %1$s, Floor: %2$s</string>
+   	<string name="specialDir">\n\nNote: Room %1$S is located %2$s.</string>
+   	<string name="cc1FloorDir">Take the main stairs in the CC1 building to the %1$s floor and turn %2$s. The room %3$s will be on your %4$s.</string>
+   	<string name="cc3FloorDir">Take the main stairs to the %1$s floor and turn %2$s. The room %3$s will be on your %4$s</string>
+   	<string name="yourLocation">Your Current Location:\nBuilding: %1$s, Floor: %2$s</string>
    	<string name="buildingTobuidling">You\'re in building %1$s and want to go to building %2$s.</string>
-   	<string name="exitCC1">Exit building from West entrance on the 1st floor. The building %1$s is locate straight ahead on your %2$s.</string>
-   	<string name="exitCC3">Exit building from South entrance on the 1st floor. The building %1$s is locate straight ahead on your %2$s.</string>
-   	<string name="exitLBA">Exit building from West entrance on the 1st floor. Take a RIGHT, The building %1$s is locate on your %2$s straight ahead.</string>
-   	<string name="exitLIB">Exit building from Est entrance on the 1st floor. Take a LEFT, The building %1$s is locate on your %2$s straight ahead.</string>
-   		<string name="destination">Turn around.\nRoom %1$s is locate behind you.</string>
-   	<string name="roomDirBuilding">Take a %1$s and go forward become building %2$s. The room %3$s is locate on your %4$s.</string>
-   	<string name="roomFound">You\'re arrived at your destination, look Left or Right to find your room %1$s.</string>
-   	<string name="invalidQRCode">You scanned an invalid QR Code\n[%1$s]\nPlease rescan QR code again.</string>
-   	<string name="errorQRCode">Unable to determine QR code you scanned. Please rescan or scan different QR code near by.</string>
+   	
+   	<string name="exitCC1">Exit the building through the West facing entrance on the 1st floor. The %1$s building will be straight ahead on your %2$s</string>
+   	<string name="exitCC3">Exit the building through the Main, South facing entrance on the 1st floor. Take a Left and go down the hill to get on the main pathway heading South. The %1$s building main entrance will be on your %2$s</string>
+   	<string name="exitLBA">Exit the building through the West facing entrance on the 1st floor. Take a RIGHT, The building %1$s will be on your %2$s straight ahead</string>
+   	<string name="exitLIB">Exit the building through the East facing entrance on the 1st floor. Take a LEFT, The building %1$s will be on your %2$s straight ahead</string>
+   	<string name="exitTheXand">Exit the %1$s building through the %2$s facing entrance on the first floor and take a %3$s. The %4$s buidling is straight ahead on your %5$s</string>
+   	<string name="exitAndStright">Exit the building through the main entrance on the first floor and your destination is straight ahead.</string>
+   	<string name = "downSidewalk">as you head %1$s on the main sidewalk.</string>
+   
+   	    
+   	<string name="destination">Turn around.\nRoom %1$s is located behind you.</string>
+   	<string name="roomDirBuilding">Take a %1$s and go forward into building %2$s. The room %3$s is located on your %4$s.</string>
+   	<string name="roomFound">You\'ve arrived at your destination.  Look left or right to find the door to room %1$s.</string>
+   	<string name="invalidQRCode">You scanned an invalid QR Code\n[%1$s]\nPlease scan a Cascadia Directions QR code.</string>
+   	<string name="errorQRCode">Unable to determine the QR code you scanned. Please rescan or scan a different QR code nearby.</string>
    
    	<!-- Menu item -->
    	<string name="menuitem_reset">Start Over</string>

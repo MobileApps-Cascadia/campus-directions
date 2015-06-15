@@ -49,11 +49,11 @@ public class InstructionsFragment extends Fragment {
 	    
 		setHasOptionsMenu(true); // this fragment has menu items to display
 
-		// display what user look for on top of screen.
+		// displays what building the user is looking for at the top of the output screen.
 		String tempStr = getResources().getString(R.string.lookForStr, MainActivity.lookFor);
 		tempStr += "\n" + getResources().getString(R.string.yourLocation, MainActivity.scanBuild, String.valueOf(MainActivity.scanFloor));
 		if(MainActivity.searchClick)
-			tempStr += "\n" + MainActivity.scanLocation();
+			tempStr += "\n" + MainActivity.scanLocation();  //scanLocation says "South End Of Building" (for instance)
 
 		//Display what is user looking for; room number
 		textLookFor = (TextView) v.findViewById(R.id.lookForText);
@@ -63,7 +63,7 @@ public class InstructionsFragment extends Fragment {
 		textDirection = (TextView) v.findViewById(R.id.textDirection);
 		String tempDirection = MainActivity.direction;
 		
-		//If there is special direction for certain room locate in select building/floor
+		//If there is special direction for a certain room located in the selected building/floor...
 		if(MainActivity.specialDirection != "")
 			tempDirection += getResources().getString(R.string.specialDir, MainActivity.lookFor, MainActivity.specialDirection);
 		
@@ -94,32 +94,7 @@ public class InstructionsFragment extends Fragment {
 		return v;
 	}
 	
-	//See MainActivity for onActivityResult after scan
-
-	/*
-	@Override
-	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-		super.onActivityResult(requestCode, resultCode, intent);
-//		System.out.println("the code is catch");
-
-		IntentResult scanResult = IntentIntegrator.parseActivityResult(
-				requestCode, resultCode, intent);
-		// handle scan result
-		if (scanResult != null) {
-			FragmentManager fm = getFragmentManager();
-
-			String myResult = intent.getStringExtra("SCAN_RESULT");
-
-			InstructionsFragment newFrame = InstructionsFragment.newInstance(scanResult.toString(), myResult);
-//			Fragment newFrame = InstructionsFragment.newInstance(myResult);
-
-			//send result to new fragment.
-			fm.beginTransaction().replace(R.id.fragmentContainer, newFrame).commit();
-		}
-	}
-	*/
 	
-	   // display this fragment's menu items
 	   @Override
 	   public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
 	   {
